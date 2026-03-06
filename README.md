@@ -13,13 +13,22 @@ This public code release intentionally excludes journal submission drafts and ot
 
 ## Quickstart (Docker)
 
+Requirements: Docker Desktop/Engine.
+
 ```bash
-# Build the image
+# 1) Build the image
 docker build -t cloudbiointegrator:local .
 
-# Minimal contract + figure regeneration from included evidence tables
+# 2) Minimal contract validation + figure regeneration from included evidence tables
 docker run --rm -v "$PWD:/work" -w /work cloudbiointegrator:local \
   bash -lc "make skeleton && make validate"
+```
+
+From scratch (optional, pulls public example data and runs a minimal smoke path):
+
+```bash
+docker run --rm -v "$PWD:/work" -w /work cloudbiointegrator:local \
+  bash -lc "make smoke && make validate"
 ```
 
 ## Evidence Tables
@@ -38,4 +47,5 @@ Publication-ready figures are under:
 
 ## License
 
-TBD.
+See `LICENSE`.
+

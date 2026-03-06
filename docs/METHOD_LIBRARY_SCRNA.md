@@ -1,6 +1,6 @@
 # METHOD_LIBRARY_SCRNA (v0)
 
-This document defines the **deployable scRNA method library** used by the CloudBioAgent pipeline.
+This document defines the **deployable scRNA method library** used by the CloudBioIntegrator pipeline.
 
 ## Scope
 
@@ -76,7 +76,7 @@ Run an integration compare (advanced pack; multi-input):
 
 Run scVI integration (advanced pack; requires scVI image + compute-tier):
 - Build/run on GPU (recommended):
-  - `IMAGE_TAG=sf-agent:scvi DOCKERFILE=Dockerfile.scvi DOCKER_TARGET=scvi-gpu DOCKER_GPU=1 SCRNA_ARGS="--input-dir data/smoke/pbmc3k_real/filtered_feature_bc_matrix,data/smoke/pbmc10k_v3_real/filtered_feature_bc_matrix --dataset-id 10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3 --method-pack advanced --runner scvi --compute-tier gpu --annotate celltypist --scvi-max-epochs 50 --scvi-n-latent 30 --seed 0" bash scripts/cloud/run_on_vm.sh`
+  - `IMAGE_TAG=cloudbiointegrator:scvi DOCKERFILE=Dockerfile.scvi DOCKER_TARGET=scvi-gpu DOCKER_GPU=1 SCRNA_ARGS="--input-dir data/smoke/pbmc3k_real/filtered_feature_bc_matrix,data/smoke/pbmc10k_v3_real/filtered_feature_bc_matrix --dataset-id 10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3 --method-pack advanced --runner scvi --compute-tier gpu --annotate celltypist --scvi-max-epochs 50 --scvi-n-latent 30 --seed 0" bash scripts/cloud/run_on_vm.sh`
 - CPU (guardrailed; small only):
   - `make scrna ARGS="--input-dir data/smoke/pbmc3k_real/filtered_feature_bc_matrix,data/smoke/pbmc10k_v3_real/filtered_feature_bc_matrix --dataset-id 10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3 --method-pack advanced --runner scvi --compute-tier cpu --scvi-max-cells 5000 --seed 0"`
 

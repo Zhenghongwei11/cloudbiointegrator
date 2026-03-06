@@ -29,7 +29,7 @@ Then open:
 - `http://127.0.0.1:8000`
 
 Environment variables (optional):
-- `CBA_IMAGE_TAG` (default: `sf-agent:smoke`)
+- `CBA_IMAGE_TAG` (default: `cloudbiointegrator:smoke`)
 - `CBA_DOCKER_BIN` (default: `docker`)
 - `CBA_RUNS_DIR` (default: `./runs`)
 - `CBA_HOST` (default: `127.0.0.1`)
@@ -61,7 +61,7 @@ Environment variables (optional):
 - The runner downloads into the isolated workspace before running.
 - Requires `gsutil` or `gcloud` auth + access on the host.
 Default backup bucket for reviewer artifacts:
-- `gs://cloudbioagent-backup-quick-ray-450709-f2-20260208144149`
+- `gs://<your-gcs-bucket>/cloudbiointegrator/`
 - Manifest + checksums: `docs/CLOUD_BACKUP_MANIFEST.tsv`
 
 4) **Manifest preset** (public datasets; best for reviewers)

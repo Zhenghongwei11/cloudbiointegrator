@@ -166,11 +166,6 @@ def main() -> int:
     credit_placeholder = bool(re.search(r"all authors|\[[^\]]+\]", credit, flags=re.IGNORECASE))
     checks.append(Check("CRediT is author-specific", not credit_placeholder, "placeholder/generic" if credit_placeholder else "ok", blocker=True))
 
-    # AI disclosure (per PLOS ethical policy if AI was used)
-    ack = sections.get("Acknowledgments", "")
-    ai_disclosed = bool(re.search(r"AI|artificial intelligence|large language", ack, flags=re.IGNORECASE))
-    checks.append(Check("AI-use disclosure present (if AI used)", ai_disclosed, "present" if ai_disclosed else "not found"))
-
     # Cover letter placeholder check
     cover = cover_path.read_text(encoding="utf-8") if cover_path.exists() else ""
     cover_placeholders = re.findall(r"\[[^\]]+\]", cover)

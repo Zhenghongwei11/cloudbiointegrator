@@ -7,16 +7,16 @@ set -euo pipefail
 #   bash scripts/cloud/run_on_vm.sh
 #
 # Optional env vars:
-#   IMAGE_TAG=sf-agent:smoke
-#   RUN_OUT=/tmp/sf-agent-run
+#   IMAGE_TAG=cloudbiointegrator:smoke
+#   RUN_OUT=/tmp/cloudbiointegrator-run
 #   GCS_BUCKET=gs://your-bucket/path   (requires gsutil configured)
 #   S3_URI=s3://bucket/prefix          (requires aws cli configured)
 #   SCRNA_ARGS="--input-dir ... --dataset-id ... --method-pack baseline ..."
 #   VISIUM_ARGS="--input-dir ... --dataset-id ... --method-pack baseline ..."
 #   FETCH_DATASET_ID="dataset_id_from_data_manifest"   (optional; runs scripts/data/fetch_dataset.py --extract on the host before container runs)
 
-IMAGE_TAG="${IMAGE_TAG:-sf-agent:smoke}"
-RUN_OUT="${RUN_OUT:-/tmp/sf-agent-run}"
+IMAGE_TAG="${IMAGE_TAG:-cloudbiointegrator:smoke}"
+RUN_OUT="${RUN_OUT:-/tmp/cloudbiointegrator-run}"
 SMOKE_ARGS="${SMOKE_ARGS:-}"
 SCRNA_ARGS="${SCRNA_ARGS:-}"
 VISIUM_ARGS="${VISIUM_ARGS:-}"

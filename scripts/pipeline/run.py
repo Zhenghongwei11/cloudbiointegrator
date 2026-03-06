@@ -354,7 +354,7 @@ def run_figures(outdir: str) -> None:
 
     scripts = [
         # F1 can be frozen to preserve the finalized schematic across rebuilds.
-        ("python3", ["scripts/figures/F1_roadmap_ai.py", "--outdir", outdir])
+        ("python3", ["scripts/figures/F1_roadmap.py", "--outdir", outdir])
         if not use_frozen_f1
         else ("python3", ["-c", "print('INFO: using frozen F1 from plots/publication/frozen/')"]),
         ("Rscript", ["scripts/figures/F2_reproducibility.R", f"--outdir={outdir}"]),

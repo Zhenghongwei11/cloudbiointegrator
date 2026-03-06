@@ -447,7 +447,7 @@ def main() -> int:
         job = read_json(job_path)
 
     docker_bin = job.get("docker", {}).get("docker_bin", "docker")
-    image_tag = job.get("docker", {}).get("image_tag", "sf-agent:smoke")
+    image_tag = job.get("docker", {}).get("image_tag", "cloudbiointegrator:smoke")
 
     set_status(run_id, "running", {"started_at": utc_now_iso()})
 

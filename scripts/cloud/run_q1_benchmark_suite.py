@@ -200,8 +200,8 @@ def main() -> int:
     ap.add_argument("--docker", action="store_true", default=True, help="Run pipeline steps in Docker (recommended).")
     ap.add_argument("--no-docker", dest="docker", action="store_false", help="Run on host (requires deps installed).")
     ap.add_argument("--docker-bin", default="docker")
-    ap.add_argument("--image-main", default="sf-agent:q1")
-    ap.add_argument("--image-scvi", default="sf-agent:scvi-gpu")
+    ap.add_argument("--image-main", default="cloudbiointegrator:q1")
+    ap.add_argument("--image-scvi", default="cloudbiointegrator:scvi-gpu")
     ap.add_argument("--skip-build", action="store_true", help="Skip building Docker images.")
     ap.add_argument("--gpu", action="store_true", default=True, help="Enable --gpus all for gpu-tier rows.")
     ap.add_argument("--no-gpu", dest="gpu", action="store_false")
@@ -411,7 +411,7 @@ def main() -> int:
             "--input",
             "docs/MANUSCRIPT_DRAFT.md",
             "--output",
-            "output/doc/CloudBioAgent_Manuscript_embedded_figures.docx",
+            "output/doc/CloudBioIntegrator_Manuscript_embedded_figures.docx",
             "--figures",
             "plots/publication/png",
         ]

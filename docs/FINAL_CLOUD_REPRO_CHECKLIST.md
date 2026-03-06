@@ -9,15 +9,15 @@ Purpose: one-click, reviewer-facing cloud rerun that reproduces tables, figures,
 
 ## 1) Start VM and prepare workspace
 ```bash
-gcloud compute instances start cloudbioagent-visium-c2l-1 --zone us-central1-a
+gcloud compute instances start cloudbiointegrator-visium-c2l-1 --zone us-central1-a
 
-gcloud compute ssh cloudbioagent-visium-c2l-1 --zone us-central1-a
+gcloud compute ssh cloudbiointegrator-visium-c2l-1 --zone us-central1-a
 # on VM
 cd ~
-rm -rf sf-agent
+rm -rf cloudbiointegrator
 
-git clone <REPO_URL> sf-agent
-cd sf-agent
+git clone <REPO_URL> cloudbiointegrator
+cd cloudbiointegrator
 
 git checkout 13fefc851a7559dceee0133f45963965b8520904
 ```
@@ -33,34 +33,34 @@ python3 scripts/data/fetch_dataset.py --dataset-id Allen_Cortex_scRNA_SeuratV5_R
 
 ## 3) Baseline CPU runs (scrna + visium)
 ```bash
-IMAGE_TAG=sf-agent:smoke \
+IMAGE_TAG=cloudbiointegrator:smoke \
 SCRNA_ARGS="--input-dir data/smoke/pbmc10k_v3_real/filtered_feature_bc_matrix --dataset-id 10x_PBMC_10k_scRNA --method-pack baseline --seed 0 --organism human --tissue blood" \
 VISIUM_ARGS="--input-dir data/smoke/visium_mouse_brain_real --dataset-id Mouse_Brain_Visium_10x --method-pack baseline --seed 0 --organism mouse --tissue brain" \
-GCS_BUCKET=gs://cloudbioagent-backup-quick-ray-450709-f2-20260208144149 \
+GCS_BUCKET=gs://<your-gcs-bucket>/cloudbiointegrator/ \
   bash scripts/cloud/run_on_vm.sh
 ```
 
 ## 4) scVI GPU integration run
 ```bash
-IMAGE_TAG=sf-agent:scvi-gpu \
+IMAGE_TAG=cloudbiointegrator:scvi-gpu \
 DOCKERFILE=Dockerfile.scvi \
 DOCKER_TARGET=scvi-gpu \
 DOCKER_GPU=1 \
 DOCKER_BUILD_ARGS="--build-arg INSTALL_CELL2LOCATION=1" \
 SCRNA_ARGS="--input-dir data/smoke/pbmc3k_real/filtered_feature_bc_matrix,data/smoke/pbmc10k_v3_real/filtered_feature_bc_matrix --dataset-id 10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3 --method-pack advanced --runner scvi --compute-tier gpu --annotate celltypist --scvi-max-epochs 50 --scvi-n-latent 30 --seed 0" \
-GCS_BUCKET=gs://cloudbioagent-backup-quick-ray-450709-f2-20260208144149 \
+GCS_BUCKET=gs://<your-gcs-bucket>/cloudbiointegrator/ \
   bash scripts/cloud/run_on_vm.sh
 ```
 
 ## 5) Visium deconvolution (RCTD + Tangram + cell2location)
 ```bash
-IMAGE_TAG=sf-agent:scvi-gpu \
+IMAGE_TAG=cloudbiointegrator:scvi-gpu \
 DOCKERFILE=Dockerfile.scvi \
 DOCKER_TARGET=scvi-gpu \
 DOCKER_GPU=1 \
 DOCKER_BUILD_ARGS="--build-arg INSTALL_CELL2LOCATION=1" \
 VISIUM_ARGS="--input-dir data/smoke/visium_mouse_brain_real --dataset-id Mouse_Brain_Visium_10x --method-pack deconvolution --runner all --reference-scrna-dir data/references/allen_cortex/prepared/filtered_feature_bc_matrix --reference-dataset-id Allen_Cortex_scRNA_SeuratV5_Reference_RDS --reference-labels-tsv data/references/allen_cortex/prepared/reference_labels.tsv --compute-tier gpu --seed 0 --organism mouse --tissue brain --cell2location-max-epochs 400 --cell2location-regression-max-epochs 100 --cell2location-num-samples 50 --cell2location-max-cells 10000 --cell2location-max-spots 3000" \
-GCS_BUCKET=gs://cloudbioagent-backup-quick-ray-450709-f2-20260208144149 \
+GCS_BUCKET=gs://<your-gcs-bucket>/cloudbiointegrator/ \
   bash scripts/cloud/run_on_vm.sh
 ```
 
@@ -72,8 +72,8 @@ make audit
 
 ## 7) Upload final artifacts
 ```bash
-gsutil -m cp docs/audit_runs/*.zip gs://cloudbioagent-backup-quick-ray-450709-f2-20260208144149/audit_runs/
-gsutil -m cp plots/publication/pdf/*.pdf plots/publication/png/*.png gs://cloudbioagent-backup-quick-ray-450709-f2-20260208144149/figures/
+gsutil -m cp docs/audit_runs/*.zip gs://<your-gcs-bucket>/cloudbiointegrator/audit_runs/
+gsutil -m cp plots/publication/pdf/*.pdf plots/publication/png/*.png gs://<your-gcs-bucket>/cloudbiointegrator/figures/
 ```
 
 ## 8) Record evidence
@@ -83,5 +83,5 @@ gsutil -m cp plots/publication/pdf/*.pdf plots/publication/png/*.png gs://cloudb
 
 ## 9) Stop VM to control cost
 ```bash
-gcloud compute instances stop cloudbioagent-visium-c2l-1 --zone us-central1-a
+gcloud compute instances stop cloudbiointegrator-visium-c2l-1 --zone us-central1-a
 ```

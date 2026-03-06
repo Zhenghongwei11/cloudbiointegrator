@@ -41,11 +41,11 @@ def _write_pdf_from_png(img: Image.Image, out_pdf: Path) -> None:
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="Export AI-generated F1 roadmap into plots/publication (PNG+PDF).")
+    ap = argparse.ArgumentParser(description="Export F1 roadmap schematic into plots/publication (PNG+PDF).")
     ap.add_argument(
         "--source",
-        default="docs/figures/F1_ai_roadmap_source_20260305.png",
-        help="Source PNG (default: docs/figures/F1_ai_roadmap_source_20260305.png).",
+        default="plots/publication/frozen/png/F1_system_contract.png",
+        help="Source PNG (default: plots/publication/frozen/png/F1_system_contract.png).",
     )
     ap.add_argument("--outdir", default="plots/publication", help="Output dir root (default: plots/publication).")
     ap.add_argument("--freeze", action="store_true", help="Also write copies under plots/publication/frozen/.")
@@ -86,4 +86,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

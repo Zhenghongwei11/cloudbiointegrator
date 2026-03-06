@@ -78,7 +78,7 @@ def main() -> int:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     headers = {
         # Crossref asks for a UA that identifies your tool. We include a generic label.
-        "User-Agent": "CloudBioAgent/0.1 (Crossref evidence fetch; no email provided)",
+        "User-Agent": "CloudBioIntegrator/0.1 (Crossref evidence fetch; no email provided)",
         "Accept": "application/json",
     }
 

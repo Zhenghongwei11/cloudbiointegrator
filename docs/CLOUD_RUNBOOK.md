@@ -49,14 +49,14 @@ docker --version
 
 ## On the VM: clone repo (tagged)
 ```bash
-git clone REPO_URL sf-agent
-cd sf-agent
+git clone REPO_URL cloudbiointegrator
+cd cloudbiointegrator
 git checkout TAG_OR_COMMIT
 ```
 
 ## Build the container
 ```bash
-docker build -t sf-agent:smoke .
+docker build -t cloudbiointegrator:smoke .
 ```
 
 ### Optional: build a cell2location-enabled image
@@ -64,14 +64,14 @@ docker build -t sf-agent:smoke .
 
 Build it explicitly:
 ```bash
-docker build -t sf-agent:cell2location --build-arg INSTALL_CELL2LOCATION=1 .
+docker build -t cloudbiointegrator:cell2location --build-arg INSTALL_CELL2LOCATION=1 .
 ```
 
 ### Optional: enable GPU torch wheels (for Tangram/cell2location on L4/A10/etc.)
 By default, the image installs CPU torch wheels for portability. On a GPU VM (with `docker run --gpus all` working), build with CUDA torch wheels:
 
 ```bash
-docker build -t sf-agent:cell2location-gpu \
+docker build -t cloudbiointegrator:cell2location-gpu \
   --build-arg INSTALL_CELL2LOCATION=1 \
   --build-arg INSTALL_CUDA_TORCH=1 \
   .
@@ -81,12 +81,12 @@ docker build -t sf-agent:cell2location-gpu \
 This pattern makes the outputs persist on the VM filesystem:
 
 ```bash
-mkdir -p /tmp/sf-agent-run
+mkdir -p /tmp/cloudbiointegrator-run
 docker run --rm \
   -u "$(id -u):$(id -g)" \
   -v "$PWD:/app" \
   -w /app \
-  sf-agent:smoke \
+  cloudbiointegrator:smoke \
   bash -lc "make skeleton && make validate && make smoke && make validate"
 ```
 
@@ -183,7 +183,7 @@ gsutil mb -p PROJECT_ID -l REGION gs://YOUR_BUCKET
 gsutil cp docs/audit_runs/*.zip gs://YOUR_BUCKET/audit_runs/
 ```
 Default backup location (current working bucket):
-- `gs://cloudbioagent-backup-quick-ray-450709-f2-20260208144149`
+- `gs://<your-gcs-bucket>/cloudbiointegrator/`
 - Manifest + checksums: `docs/CLOUD_BACKUP_MANIFEST.tsv`
 
 ## Cleanup (avoid cost)
@@ -224,11 +224,11 @@ Open `http://127.0.0.1:8000` locally.
 Recommended for audit evidence without large browser uploads:
 1) Build the pipeline image once on the VM:
 ```bash
-docker build -t sf-agent:smoke .
+docker build -t cloudbiointegrator:smoke .
 ```
 2) Start the UI:
 ```bash
-export CBA_IMAGE_TAG=sf-agent:smoke
+export CBA_IMAGE_TAG=cloudbiointegrator:smoke
 export CBA_ALLOWED_MOUNTS="/tmp:/home:/mnt:/data"
 make app
 ```

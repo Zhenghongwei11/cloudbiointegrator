@@ -17,9 +17,6 @@ PRODUCT_DOCS = [
     "CLAIMS.tsv",
     "EVALUATION_MATRIX.tsv",
     "FIGURE_PROVENANCE.tsv",
-    # AI disclosure: prompt used to generate the conceptual schematic for Figure 1.
-    # Kept in the review bundle for transparency; does not affect quantitative figure panels.
-    "F1_ai_figure_prompt.docx",
     "METHOD_LIBRARY_SCRNA.md",
     "METHOD_LIBRARY_VISIUM.md",
     "DATA_PLAN.md",

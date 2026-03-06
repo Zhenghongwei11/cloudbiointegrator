@@ -145,7 +145,7 @@ def _get(url: str, timeout_s: int = 30) -> tuple[int, int]:
                 timeout=timeout_s,
                 allow_redirects=True,
                 stream=True,
-                headers={"User-Agent": "CloudBioAgent/0.1"},
+                headers={"User-Agent": "CloudBioIntegrator/0.1"},
             )
             status = r.status_code
             n = 0

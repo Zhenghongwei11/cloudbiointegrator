@@ -1,6 +1,6 @@
 # METHOD_LIBRARY_VISIUM (v0)
 
-This document defines the **deployable 10x Visium (Space Ranger) method library** used by the CloudBioAgent pipeline.
+This document defines the **deployable 10x Visium (Space Ranger) method library** used by the CloudBioIntegrator pipeline.
 
 ## Scope
 
@@ -72,7 +72,7 @@ Run Visium deconvolution/mapping (requires a scRNA reference):
 
 Run Visium deconvolution with cell2location (requires an image that includes cell2location deps):
 - Build with deps enabled:
-  - `docker build -t sf-agent:cell2location --build-arg INSTALL_CELL2LOCATION=1 .`
+  - `docker build -t cloudbiointegrator:cell2location --build-arg INSTALL_CELL2LOCATION=1 .`
 - Run with the explicit runner selector:
   - `make visium ARGS="--input-dir data/smoke/visium_human_lymph_node_real --dataset-id 10x_Visium_Human_Lymph_Node_1p1_cf --method-pack deconvolution --runner cell2location --reference-scrna-dir data/smoke/pbmc3k_real/filtered_feature_bc_matrix --reference-dataset-id 10x_PBMC_3k_scRNA_2016_S3 --compute-tier cpu --seed 0 --organism human --tissue lymph_node"`
 

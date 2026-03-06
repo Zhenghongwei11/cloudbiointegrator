@@ -33,3 +33,7 @@ results/benchmarks/**
 !results/figures/
 results/figures/**
 !results/figures/F1_system_contract.tsv
+
+# Python bytecode
+__pycache__/
+*.pyc

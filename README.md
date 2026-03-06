@@ -15,6 +15,9 @@ This public code release intentionally excludes journal submission drafts and ot
 
 Requirements: Docker Desktop/Engine.
 
+This page is a minimal **usage** and **reproduce/replicate** guide for the included evidence tables and figures.
+The container provides a pinned **environment** for consistent execution.
+
 ```bash
 # 1) Build the image
 docker build -t cloudbiointegrator:local .
@@ -30,6 +33,15 @@ From scratch (optional, pulls public example data and runs a minimal smoke path)
 docker run --rm -v "$PWD:/work" -w /work cloudbiointegrator:local \
   bash -lc "make smoke && make validate"
 ```
+
+## Expected Results
+
+After a successful run you should see updated files under:
+
+- `results/` (tables)
+- `plots/publication/` (figures)
+
+If you need to install dependencies outside Docker, use the Dockerfile as the environment specification.
 
 ## Evidence Tables
 
@@ -48,4 +60,3 @@ Publication-ready figures are under:
 ## License
 
 See `LICENSE`.
-

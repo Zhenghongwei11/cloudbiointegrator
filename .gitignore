@@ -1,0 +1,35 @@
+docs/audit_runs/
+docs/audit_runs_gcp/
+docs/audit_runs_submission/
+docs/review_bundle/
+plots/publication/
+logs/
+.venv/
+.venv_app/
+runs/
+cache/
+
+# Public dataset downloads (do not commit)
+data/smoke/pbmc3k_real/
+data/smoke/pbmc10k_v3_real/
+data/smoke/*_real/
+data/references/
+
+# macOS
+.DS_Store
+
+# results/: track only the table contracts (headers); ignore run outputs
+results/**
+!results/dataset_summary.tsv
+!results/audit/
+results/audit/**
+!results/audit/reproducibility_checks.tsv
+!results/benchmarks/
+results/benchmarks/**
+!results/benchmarks/method_benchmark.tsv
+!results/benchmarks/biological_output_concordance.tsv
+!results/benchmarks/runtime_cost_failure.tsv
+!results/benchmarks/robustness_matrix.tsv
+!results/figures/
+results/figures/**
+!results/figures/F1_system_contract.tsv

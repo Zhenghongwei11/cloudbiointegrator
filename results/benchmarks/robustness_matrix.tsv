@@ -1,0 +1,52 @@
+dataset_id	modality	method_id	perturbation_id	severity	metric_id	metric_value	delta_vs_nominal	pass	failure_reason	notes
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	seed_plus_1	low	ARI_cluster	0.9798226261388892	-0.0202	1		same neighbors graph; Leiden random_state seed vs seed+1
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	seed_plus_1	low	ARI_cluster	0.9798226261388892	-0.0202	1		same neighbors graph; Leiden random_state seed vs seed+1
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	harmony	integration_vs_baseline	na	delta_batch_mixing_mean	0.12523981377369595				positive indicates more cross-batch neighbors on average
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	seurat-v5-standard	seed_plus_1	low	ARI_cluster	1	0.0000	1		same neighbors graph; Leiden random_state seed vs seed+1
+Mouse_Brain_Visium_10x	Visium	tangram	hvg_half	low	mean_pearson_by_cell_type	0.343345003939202		0	low concordance under hvg_half	hvg=2000 vs hvg=1000;max_cells=3000
+Mouse_Brain_Visium_10x	Visium	tangram	hvg_half	low	mean_pearson_by_cell_type	0.34258632166968306		0	low concordance under hvg_half	hvg=2000 vs hvg=1000;max_cells=3000
+10x_PBMC_10k_scRNA	scRNA-seq	scanpy-standard	seed_plus_1	low	ARI_cluster	0.9119052458963974	-0.0881	1		same neighbors graph; Leiden random_state seed vs seed+1
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	harmony	integration_vs_baseline	na	delta_batch_mixing_mean	0.12523912072977775				positive indicates more cross-batch neighbors on average
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	hvg_half	low	ARI_cluster	0.08601805488211252	-0.9140	0	ARI<0.90 under HVG/2 perturbation	scVI clustering stability: HVG vs HVG/2
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	harmony	integration_vs_baseline	na	delta_batch_mixing_mean	0.12523912072977775				positive indicates more cross-batch neighbors on average
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	hvg_half	low	ARI_cluster	0.08601805488211252	-0.9140	0	ARI<0.90 under HVG/2 perturbation	scVI clustering stability: HVG vs HVG/2
+Mouse_Brain_Visium_10x	Visium	tangram	hvg_half	low	mean_pearson_by_cell_type	0.3423393509117409		0	low concordance under hvg_half	hvg=2000 vs hvg=1000;max_cells=3000
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	seed_plus_1	low	ARI_cluster	0.9798226261388892	-0.0202	1		same neighbors graph; Leiden random_state seed vs seed+1
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	seed_plus_1	low	ARI_cluster	0.9798226261388892	-0.0202	1		same neighbors graph; Leiden random_state seed vs seed+1
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	seed_plus_1	low	ARI_cluster	0.9798226261388892	-0.0202	1		same neighbors graph; Leiden random_state seed vs seed+1
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	seed_plus_1	low	ARI_cluster	1.0	0.0000	1		same neighbors graph; Leiden random_state seed vs seed+1
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	seed_plus_1	low	ARI_cluster	1.0	0.0000	1		same neighbors graph; Leiden random_state seed vs seed+1
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	seed_plus_1	low	ARI_cluster	0.9885645987976646	-0.0114	1		same neighbors graph; Leiden random_state seed vs seed+1
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	seed_plus_1	low	ARI_cluster	0.9885645987976646	-0.0114	1		same neighbors graph; Leiden random_state seed vs seed+1
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	seed_plus_1	low	ARI_cluster	0.9849079872660536	-0.0151	1		same neighbors graph; Leiden random_state seed vs seed+1
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	seed_plus_1	low	ARI_cluster	0.9798226261388892	-0.0202	1		same neighbors graph; Leiden random_state seed vs seed+1
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	seed_plus_1	low	ARI_cluster	1.0	0.0000	1		same neighbors graph; Leiden random_state seed vs seed+1
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	seed_plus_1	low	ARI_cluster	0.9885645987976646	-0.0114	1		same neighbors graph; Leiden random_state seed vs seed+1
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	seed_plus_1	low	ARI_cluster	0.9849079872660536	-0.0151	1		same neighbors graph; Leiden random_state seed vs seed+1
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	seed_plus_1	low	ARI_cluster	0.9785811648439124	-0.0214	1		same neighbors graph; Leiden random_state seed vs seed+1
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	seurat-v5-standard	seed_plus_1	low	ARI_cluster	1	0.0000	1		same neighbors graph; Leiden random_state seed vs seed+1
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	seurat-v5-standard	seed_plus_1	low	ARI_cluster	1	0.0000	1		same neighbors graph; Leiden random_state seed vs seed+1
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	seurat-v5-standard	seed_plus_1	low	ARI_cluster	1	0.0000	1		same neighbors graph; Leiden random_state seed vs seed+1
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	seurat-v5-standard	seed_plus_1	low	ARI_cluster	1	0.0000	1		same neighbors graph; Leiden random_state seed vs seed+1
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	seurat-v5-standard	seed_plus_1	low	ARI_cluster	1	0.0000	1		same neighbors graph; Leiden random_state seed vs seed+1
+10x_PBMC_10k_scRNA	scRNA-seq	scanpy-standard	seed_plus_1	low	ARI_cluster	0.9119052458963974	-0.0881	1		same neighbors graph; Leiden random_state seed vs seed+1
+10x_PBMC_10k_scRNA	scRNA-seq	scanpy-standard	seed_plus_1	low	ARI_cluster	0.8576018825986855	-0.1424	0	ARI<0.90 under seed perturbation	same neighbors graph; Leiden random_state seed vs seed+1
+10x_PBMC_10k_scRNA	scRNA-seq	scanpy-standard	seed_plus_1	low	ARI_cluster	0.8740130903955364	-0.1260	0	ARI<0.90 under seed perturbation	same neighbors graph; Leiden random_state seed vs seed+1
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	harmony	integration_vs_baseline	na	delta_batch_mixing_mean	0.12523912072977775				positive indicates more cross-batch neighbors on average
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	hvg_half	low	ARI_cluster	0.08601805488211252	-0.9140	0	ARI<0.90 under HVG/2 perturbation	scVI clustering stability: HVG vs HVG/2
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	harmony	integration_vs_baseline	na	delta_batch_mixing_mean	0.12523912072977775				positive indicates more cross-batch neighbors on average
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	hvg_half	low	ARI_cluster	0.08601805488211252	-0.9140	0	ARI<0.90 under HVG/2 perturbation	scVI clustering stability: HVG vs HVG/2
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	harmony	integration_vs_baseline	na	delta_batch_mixing_mean	0.12523912072977775				positive indicates more cross-batch neighbors on average
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	hvg_half	low	ARI_cluster	0.08601805488211252	-0.9140	0	ARI<0.90 under HVG/2 perturbation	scVI clustering stability: HVG vs HVG/2
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	harmony	integration_vs_baseline	na	delta_batch_mixing_mean	0.12867465660330163				positive indicates more cross-batch neighbors on average
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	hvg_half	low	ARI_cluster	0.04695341859880767	-0.9530	0	ARI<0.90 under HVG/2 perturbation	scVI clustering stability: HVG vs HVG/2
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	harmony	integration_vs_baseline	na	delta_batch_mixing_mean	0.12326813102854095				positive indicates more cross-batch neighbors on average
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	hvg_half	low	ARI_cluster	0.050377709139547706	-0.9496	0	ARI<0.90 under HVG/2 perturbation	scVI clustering stability: HVG vs HVG/2
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	harmony	integration_vs_baseline	na	delta_batch_mixing_mean	0.12523912072977775				positive indicates more cross-batch neighbors on average
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	scvi	hvg_half	low	ARI_cluster	0.08601805488211252	-0.9140	0	ARI<0.90 under HVG/2 perturbation	scVI clustering stability: HVG vs HVG/2
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	harmony	integration_vs_baseline	na	delta_batch_mixing_mean	0.12867465660330163				positive indicates more cross-batch neighbors on average
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	scvi	hvg_half	low	ARI_cluster	0.04695341859880767	-0.9530	0	ARI<0.90 under HVG/2 perturbation	scVI clustering stability: HVG vs HVG/2
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	harmony	integration_vs_baseline	na	delta_batch_mixing_mean	0.12326813102854095				positive indicates more cross-batch neighbors on average
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	scvi	hvg_half	low	ARI_cluster	0.050377709139547706	-0.9496	0	ARI<0.90 under HVG/2 perturbation	scVI clustering stability: HVG vs HVG/2
+Mouse_Brain_Visium_10x	Visium	tangram	hvg_half	low	mean_pearson_by_cell_type	0.34202771141050087		0	low concordance under hvg_half	hvg=2000 vs hvg=1000;max_cells=3000
+Mouse_Brain_Visium_10x	Visium	tangram	hvg_half	low	mean_pearson_by_cell_type	0.11968180096215093		0	low concordance under hvg_half	hvg=2000 vs hvg=1000;max_cells=3000

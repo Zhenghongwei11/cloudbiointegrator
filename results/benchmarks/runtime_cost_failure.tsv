@@ -1,0 +1,337 @@
+dataset_id	modality	method_id	run_id	status	failure_type	wall_time_s	peak_ram_gb	peak_disk_gb	cpu_hours	gpu_hours	estimated_cost_usd	cost_model	notes
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	python-ingest	20260201T083145Z-smoke-91a302e2d1	ok		0.004							smoke ingest only
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	baseline:scanpy-standard	20260201T165752Z-scrna_baseline-e04fee430b	ok		53.023							v0 scanpy pack
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	baseline:scanpy-standard	20260201T170224Z-scrna_baseline-a893b2b91a	ok		41.157							v0 scanpy pack
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	scanpy-standard	20260201T170416Z-scrna_advanced-a0e75312e5	ok		23.449							integration scenario (baseline stage only)
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	harmony	20260201T170416Z-scrna_advanced-a0e75312e5	ok		11.848							integration stage (Harmony on PCA)
+10x_Visium_Human_Lymph_Node_1p1_cf	Visium	baseline:scanpy-visium-baseline	20260202T051034Z-visium_baseline-2da62f921a	ok		28.259							v0 visium baseline pack
+10x_Visium_Human_Lymph_Node_1p1_cf	Visium	baseline:scanpy-visium-baseline	20260202T051526Z-visium_baseline-a5bd6b8a1a	ok		25.151							v0 visium baseline pack
+10x_Visium_Human_Lymph_Node_1p1_cf	Visium	baseline:scanpy-visium-baseline	20260202T054416Z-visium_baseline-a5aa992f89	ok		26.836							v0 visium baseline pack
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	baseline:scanpy-standard	20260202T120121Z-scrna_baseline-e4c8efba62	fail	RuntimeError	1.998							"Seurat runner failed:
+Warning message:
+D-Bus service not found!
+
+- If you are in a container environment, please consider adding the
+  following to your configuration to silence this warning:
+
+  options(bspm.sudo = TRUE)
+
+- If you are in a desktop/server environment, please remove any 'bspm'
+  installation from the user library and force a new system
+  installation as follows:
+
+  $ sudo Rscript --vanilla -e 'install.packages(""bspm"", repos=""https://cran.r-project.org"")' 
+Error in Seurat::Read10X(data.dir = dir) : 
+  Barcode file missing. Expecting barcodes.tsv.gz
+Calls: Read10X_auto -> <Anonymous>
+Execution halted"
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	baseline:scanpy-standard	20260202T120223Z-scrna_baseline-d95cf6f16b	fail	RuntimeError	11.542							"Seurat runner failed:
+Warning message:
+D-Bus service not found!
+
+- If you are in a container environment, please consider adding the
+  following to your configuration to silence this warning:
+
+  options(bspm.sudo = TRUE)
+
+- If you are in a desktop/server environment, please remove any 'bspm'
+  installation from the user library and force a new system
+  installation as follows:
+
+  $ sudo Rscript --vanilla -e 'install.packages(""bspm"", repos=""https://cran.r-project.org"")' 
+'as(<dgTMatrix>, ""dgCMatrix"")' is deprecated.
+Use 'as(., ""CsparseMatrix"")' instead.
+See help(""Deprecated"") and help(""Matrix-deprecated"").
+Warning: Feature names cannot have underscores ('_'), replacing with dashes ('-')
+Error in RunLeiden(object = object, leiden_method = leiden_method, leiden_objective_function = leiden_objective_function,  : 
+  Package 'leidenbase' is required for leiden_method = 'leidenbase'. Please install it with: install.packages('leidenbase')
+Calls: <Anonymous> ... FindClusters.Seurat -> FindClusters -> FindClusters.default -> RunLeiden
+In addition: Warning message:
+In RunLeiden(object = object, leiden_method = leiden_method, leiden_objective_function = leiden_objective_function,  :
+  `random.seed` must be greater than 0 for leiden clustering, resetting `random.seed` to 1.
+Execution halted"
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	baseline:seurat-v5-standard	20260203T055809Z-scrna_baseline-8de7a163ec	ok		15.192							v0 scanpy pack
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	python-ingest	20260203T055905Z-smoke-5de754f7a1	ok		0.004							smoke ingest only
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	advanced:scvi	20260203T090736Z-scrna_advanced-05e2a54af3	fail	missing_dependency	0.000							scVI requires torch; import failed: No module named 'torch'
+Mouse_Brain_Visium_10x	Visium	deconvolution:rctd	20260205T154121Z-visium_deconvolution-b4927be737	ok		1850.388							reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv
+Mouse_Brain_Visium_10x	Visium	deconvolution:tangram	20260205T154121Z-visium_deconvolution-b4927be737	ok		33.478							reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=all
+Mouse_Brain_Visium_10x	Visium	deconvolution:cell2location	20260205T154121Z-visium_deconvolution-b4927be737	fail	missing_dependency	5.888							reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=all
+Mouse_Brain_Visium_10x	Visium	deconvolution:rctd	20260205T162716Z-visium_deconvolution-158259d2e6	ok		1863.329							reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv
+Mouse_Brain_Visium_10x	Visium	deconvolution:tangram	20260205T162716Z-visium_deconvolution-158259d2e6	ok		290.949							reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=all
+Mouse_Brain_Visium_10x	Visium	deconvolution:cell2location	20260205T162716Z-visium_deconvolution-158259d2e6	fail	runtime_error	295.129							reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=all
+Mouse_Brain_Visium_10x	Visium	deconvolution:rctd	20260205T214045Z-visium_deconvolution-f3484a7b02	skip	runner_selection								reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;skipped_by_runner
+Mouse_Brain_Visium_10x	Visium	deconvolution:tangram	20260205T214045Z-visium_deconvolution-f3484a7b02	skip									reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=cell2location
+Mouse_Brain_Visium_10x	Visium	deconvolution:cell2location	20260205T214045Z-visium_deconvolution-f3484a7b02	fail	runtime_error	300.120							"reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=cell2location;error=cell2location runner failed:
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_csv from `anndata` is deprecated. Import anndata.io.read_csv instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_excel from `anndata` is deprecated. Import anndata.io.read_excel instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_hdf from `anndata` is deprecated. Import anndata.io.read_hdf instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_loom from `anndata` is deprecated. Import anndata.io.read_loom in"
+Mouse_Brain_Visium_10x	Visium	deconvolution:visium	20260205T214045Z-visium_deconvolution-f3484a7b02	fail	RuntimeError	379.974							"cell2location runner failed:
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_csv from `anndata` is deprecated. Import anndata.io.read_csv instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_excel from `anndata` is deprecated. Import anndata.io.read_excel instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_hdf from `anndata` is deprecated. Import anndata.io.read_hdf instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_loom from `anndata` is deprecated. Import anndata.io.read_loom instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_mtx from `anndata` is deprecated. Import anndata.io.read_mtx instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_text from `anndata` is deprecated. Import anndata.io.read_text instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_umi_tools from `anndata` is deprecated. Import anndata.io.read_umi_tools instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/lightning/fabric/__init__.py:40: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_csv from `anndata` is deprecated. Import anndata.io.read_csv instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11"
+Mouse_Brain_Visium_10x	Visium	deconvolution:rctd	20260205T215257Z-visium_deconvolution-77f027ba0b	skip	runner_selection								reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;skipped_by_runner
+Mouse_Brain_Visium_10x	Visium	deconvolution:tangram	20260205T215257Z-visium_deconvolution-77f027ba0b	skip									reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=cell2location
+Mouse_Brain_Visium_10x	Visium	deconvolution:cell2location	20260205T215257Z-visium_deconvolution-77f027ba0b	fail	runtime_error	296.438							"reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=cell2location;error=cell2location runner failed:
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_csv from `anndata` is deprecated. Import anndata.io.read_csv instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_excel from `anndata` is deprecated. Import anndata.io.read_excel instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_hdf from `anndata` is deprecated. Import anndata.io.read_hdf instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_loom from `anndata` is deprecated. Import anndata.io.read_loom in"
+Mouse_Brain_Visium_10x	Visium	deconvolution:visium	20260205T215257Z-visium_deconvolution-77f027ba0b	fail	RuntimeError	374.032							"cell2location runner failed:
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_csv from `anndata` is deprecated. Import anndata.io.read_csv instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_excel from `anndata` is deprecated. Import anndata.io.read_excel instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_hdf from `anndata` is deprecated. Import anndata.io.read_hdf instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_loom from `anndata` is deprecated. Import anndata.io.read_loom instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_mtx from `anndata` is deprecated. Import anndata.io.read_mtx instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_text from `anndata` is deprecated. Import anndata.io.read_text instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_umi_tools from `anndata` is deprecated. Import anndata.io.read_umi_tools instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/lightning/fabric/__init__.py:40: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_csv from `anndata` is deprecated. Import anndata.io.read_csv instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11"
+Mouse_Brain_Visium_10x	Visium	deconvolution:rctd	20260205T220528Z-visium_deconvolution-8ead28a165	skip	runner_selection								reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;skipped_by_runner
+Mouse_Brain_Visium_10x	Visium	deconvolution:tangram	20260205T220528Z-visium_deconvolution-8ead28a165	skip									reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=cell2location
+Mouse_Brain_Visium_10x	Visium	deconvolution:cell2location	20260205T220528Z-visium_deconvolution-8ead28a165	fail	runtime_error	297.212							"reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=cell2location;error=cell2location runner failed:
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_csv from `anndata` is deprecated. Import anndata.io.read_csv instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_excel from `anndata` is deprecated. Import anndata.io.read_excel instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_hdf from `anndata` is deprecated. Import anndata.io.read_hdf instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_loom from `anndata` is deprecated. Import anndata.io.read_loom in"
+Mouse_Brain_Visium_10x	Visium	deconvolution:visium	20260205T220528Z-visium_deconvolution-8ead28a165	fail	RuntimeError	374.815							"cell2location runner failed:
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_csv from `anndata` is deprecated. Import anndata.io.read_csv instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_excel from `anndata` is deprecated. Import anndata.io.read_excel instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_hdf from `anndata` is deprecated. Import anndata.io.read_hdf instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_loom from `anndata` is deprecated. Import anndata.io.read_loom instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_mtx from `anndata` is deprecated. Import anndata.io.read_mtx instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_text from `anndata` is deprecated. Import anndata.io.read_text instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_umi_tools from `anndata` is deprecated. Import anndata.io.read_umi_tools instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/lightning/fabric/__init__.py:40: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_csv from `anndata` is deprecated. Import anndata.io.read_csv instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11"
+Mouse_Brain_Visium_10x	Visium	deconvolution:rctd	20260205T221837Z-visium_deconvolution-8960322f52	skip	runner_selection								reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;skipped_by_runner
+Mouse_Brain_Visium_10x	Visium	deconvolution:tangram	20260205T221837Z-visium_deconvolution-8960322f52	skip									reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=cell2location
+Mouse_Brain_Visium_10x	Visium	deconvolution:cell2location	20260205T221837Z-visium_deconvolution-8960322f52	fail	runtime_error	298.620							"reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=cell2location;error=cell2location runner failed:
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_csv from `anndata` is deprecated. Import anndata.io.read_csv instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_excel from `anndata` is deprecated. Import anndata.io.read_excel instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_hdf from `anndata` is deprecated. Import anndata.io.read_hdf instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_loom from `anndata` is deprecated. Import anndata.io.read_loom in"
+Mouse_Brain_Visium_10x	Visium	deconvolution:visium	20260205T221837Z-visium_deconvolution-8960322f52	fail	RuntimeError	376.950							"cell2location runner failed:
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_csv from `anndata` is deprecated. Import anndata.io.read_csv instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_excel from `anndata` is deprecated. Import anndata.io.read_excel instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_hdf from `anndata` is deprecated. Import anndata.io.read_hdf instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_loom from `anndata` is deprecated. Import anndata.io.read_loom instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_mtx from `anndata` is deprecated. Import anndata.io.read_mtx instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_text from `anndata` is deprecated. Import anndata.io.read_text instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_umi_tools from `anndata` is deprecated. Import anndata.io.read_umi_tools instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/lightning/fabric/__init__.py:40: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_csv from `anndata` is deprecated. Import anndata.io.read_csv instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11"
+Mouse_Brain_Visium_10x	Visium	deconvolution:rctd	20260205T223104Z-visium_deconvolution-522ef2ba55	skip	runner_selection								reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;skipped_by_runner
+Mouse_Brain_Visium_10x	Visium	deconvolution:tangram	20260205T223104Z-visium_deconvolution-522ef2ba55	skip									reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=cell2location
+Mouse_Brain_Visium_10x	Visium	deconvolution:cell2location	20260205T223104Z-visium_deconvolution-522ef2ba55	fail	runtime_error	295.479							"reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=cell2location;error=cell2location runner failed:
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_csv from `anndata` is deprecated. Import anndata.io.read_csv instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_excel from `anndata` is deprecated. Import anndata.io.read_excel instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_hdf from `anndata` is deprecated. Import anndata.io.read_hdf instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_loom from `anndata` is deprecated. Import anndata.io.read_loom in"
+Mouse_Brain_Visium_10x	Visium	deconvolution:visium	20260205T223104Z-visium_deconvolution-522ef2ba55	fail	RuntimeError	373.913							"cell2location runner failed:
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_csv from `anndata` is deprecated. Import anndata.io.read_csv instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_excel from `anndata` is deprecated. Import anndata.io.read_excel instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_hdf from `anndata` is deprecated. Import anndata.io.read_hdf instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_loom from `anndata` is deprecated. Import anndata.io.read_loom instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_mtx from `anndata` is deprecated. Import anndata.io.read_mtx instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_text from `anndata` is deprecated. Import anndata.io.read_text instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_umi_tools from `anndata` is deprecated. Import anndata.io.read_umi_tools instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11/site-packages/lightning/fabric/__init__.py:40: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+/opt/python311/lib/python3.11/site-packages/anndata/utils.py:434: FutureWarning: Importing read_csv from `anndata` is deprecated. Import anndata.io.read_csv instead.
+  warnings.warn(msg, FutureWarning)
+/opt/python311/lib/python3.11"
+Mouse_Brain_Visium_10x	Visium	deconvolution:rctd	20260205T224332Z-visium_deconvolution-0614d8c903	skip	runner_selection								reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;skipped_by_runner
+Mouse_Brain_Visium_10x	Visium	deconvolution:tangram	20260205T224332Z-visium_deconvolution-0614d8c903	skip									reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=cell2location
+Mouse_Brain_Visium_10x	Visium	deconvolution:cell2location	20260205T224332Z-visium_deconvolution-0614d8c903	ok		305.059							reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=cell2location
+Mouse_Brain_Visium_10x	Visium	deconvolution:rctd	20260206T023853Z-visium_deconvolution-6c607a2569	skip	runner_selection								reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;skipped_by_runner
+Mouse_Brain_Visium_10x	Visium	deconvolution:tangram	20260206T023853Z-visium_deconvolution-6c607a2569	skip									reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=cell2location
+Mouse_Brain_Visium_10x	Visium	deconvolution:cell2location	20260206T023853Z-visium_deconvolution-6c607a2569	ok		429.645							reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=cell2location
+Mouse_Brain_Visium_10x	Visium	deconvolution:rctd	20260208T061354Z-visium_deconvolution-dcb151388b	skip	runner_selection								reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;skipped_by_runner
+Mouse_Brain_Visium_10x	Visium	deconvolution:tangram	20260208T061354Z-visium_deconvolution-dcb151388b	skip									reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=cell2location
+Mouse_Brain_Visium_10x	Visium	deconvolution:cell2location	20260208T061354Z-visium_deconvolution-dcb151388b	ok		534.192							reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=cell2location
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	python-ingest	20260208T083932Z-smoke-243c9aff72	ok		0.008							smoke ingest only
+10x_PBMC_10k_scRNA	scRNA-seq	baseline:scanpy-standard	20260208T083951Z-scrna_baseline-b2465f8056	ok		197.813							v0 scanpy pack
+Mouse_Brain_Visium_10x	Visium	baseline:scanpy-visium-baseline	20260208T084331Z-visium_baseline-4587616f92	ok		68.335							v0 visium baseline pack
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	python-ingest	20260208T092736Z-smoke-5f084a8144	ok		0.070							smoke ingest only
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	advanced:scvi	20260208T092741Z-scrna_advanced-896624fad4	fail	runtime_error	24.681							"RuntimeError: Missing scRNA integration dependencies. Run via Docker (recommended) or install python deps.
+Import error: cannot cache function 'sparse_mean_var_minor_axis': no locator available for file '/opt/python311/lib/python3.11/site-packages/scanpy/preprocessing/_utils.py'"
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	python-ingest	20260208T092929Z-smoke-96cd610ddb	ok		0.008							smoke ingest only
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scanpy-standard	20260208T092934Z-scrna_advanced-381128bee2	ok		10.267							integration scenario (baseline stage only)
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	harmony	20260208T092934Z-scrna_advanced-381128bee2	ok		25.352							integration stage (Harmony on PCA)
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	20260208T092934Z-scrna_advanced-381128bee2	ok		58.110							compute_tier=gpu;hvg=2000;latent=30;epochs=50
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	20260208T092934Z-scrna_advanced-381128bee2	ok		45.415							perturbation=hvg_half
+Mouse_Brain_Visium_10x	Visium	deconvolution:visium	20260208T093526Z-visium_deconvolution-56e2ecb7e8	fail	RuntimeError	48.929							"RCTD runner failed:
+Error: Missing R package 'spacexr' (RCTD). Install it in the container image (pinned) before running.
+Execution halted"
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	python-ingest	20260208T094418Z-smoke-642a1feb6c	ok		0.009							smoke ingest only
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	python-ingest	20260208T094739Z-smoke-4aa933315c	ok		0.009							smoke ingest only
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scanpy-standard	20260208T094800Z-scrna_advanced-4f69742c40	ok		9.606							integration scenario (baseline stage only)
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	harmony	20260208T094800Z-scrna_advanced-4f69742c40	ok		23.567							integration stage (Harmony on PCA)
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	20260208T094800Z-scrna_advanced-4f69742c40	ok		58.883							compute_tier=gpu;hvg=2000;latent=30;epochs=50
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	20260208T094800Z-scrna_advanced-4f69742c40	ok		45.558							perturbation=hvg_half
+Mouse_Brain_Visium_10x	Visium	deconvolution:rctd	20260208T095438Z-visium_deconvolution-a902009748	ok		1984.341							reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv
+Mouse_Brain_Visium_10x	Visium	deconvolution:tangram	20260208T095438Z-visium_deconvolution-a902009748	ok		290.405							reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=all
+Mouse_Brain_Visium_10x	Visium	deconvolution:cell2location	20260208T095438Z-visium_deconvolution-a902009748	ok		549.664							reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=all
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	baseline:scanpy-standard	20260209T122217Z-scrna_baseline-9479dae77e	ok		67.102							v0 scanpy pack
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	baseline:scanpy-standard	20260209T122553Z-scrna_baseline-84cd9bcf05	ok		67.451							v0 scanpy pack
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	baseline:scanpy-standard	20260209T122648Z-scrna_baseline-a983be208c	ok		68.822							v0 scanpy pack
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	baseline:scanpy-standard	20260209T122743Z-scrna_baseline-92893a21ff	ok		68.770							v0 scanpy pack
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	baseline:scanpy-standard	20260209T122840Z-scrna_baseline-2dbdde7111	ok		68.681							v0 scanpy pack
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	baseline:scanpy-standard	20260209T122935Z-scrna_baseline-c9cfdebbc1	ok		68.980							v0 scanpy pack
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	baseline:scanpy-standard	20260209T123032Z-scrna_baseline-484c55c3cd	ok		69.489							v0 scanpy pack
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	baseline:scanpy-standard	20260209T123127Z-scrna_baseline-f6cee8528a	ok		68.169							v0 scanpy pack
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	baseline:scanpy-standard	20260209T125251Z-scrna_baseline-b8ecfb5a40	ok		65.249							v0 scanpy pack
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	baseline:scanpy-standard	20260209T125438Z-scrna_baseline-1018e18b4b	ok		65.249							v0 scanpy pack
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	baseline:scanpy-standard	20260209T125625Z-scrna_baseline-97fa3f5d65	ok		65.691							v0 scanpy pack
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	baseline:scanpy-standard	20260209T125812Z-scrna_baseline-97e4e8ca7e	ok		65.769							v0 scanpy pack
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	baseline:scanpy-standard	20260209T125959Z-scrna_baseline-bc04e17e4c	ok		65.276							v0 scanpy pack
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	baseline:seurat-v5-standard	20260209T130146Z-scrna_baseline-b63677ac38	ok		21.866							v0 scanpy pack
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	baseline:seurat-v5-standard	20260209T130248Z-scrna_baseline-df589f1da4	ok		21.830							v0 scanpy pack
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	baseline:seurat-v5-standard	20260209T130350Z-scrna_baseline-f8cfc20ec3	ok		21.819							v0 scanpy pack
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	baseline:seurat-v5-standard	20260209T130452Z-scrna_baseline-63c8dac53f	ok		21.785							v0 scanpy pack
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	baseline:seurat-v5-standard	20260209T130555Z-scrna_baseline-daa9c1c874	ok		21.778							v0 scanpy pack
+10x_PBMC_10k_scRNA	scRNA-seq	baseline:scanpy-standard	20260209T130657Z-scrna_baseline-9bec5645cb	ok		183.096							v0 scanpy pack
+10x_PBMC_10k_scRNA	scRNA-seq	baseline:scanpy-standard	20260209T131042Z-scrna_baseline-407d298849	ok		175.310							v0 scanpy pack
+10x_PBMC_10k_scRNA	scRNA-seq	baseline:scanpy-standard	20260209T131419Z-scrna_baseline-29a2a9db87	ok		180.772							v0 scanpy pack
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scanpy-standard	20260209T131804Z-scrna_advanced-40798ab33b	ok		9.181							integration scenario (baseline stage only)
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	harmony	20260209T131804Z-scrna_advanced-40798ab33b	ok		20.563							integration stage (Harmony on PCA)
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	20260209T131804Z-scrna_advanced-40798ab33b	ok		42.842							compute_tier=gpu;hvg=2000;latent=30;epochs=50
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	20260209T131804Z-scrna_advanced-40798ab33b	ok		38.862							perturbation=hvg_half
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	advanced:scvi	20260209T131804Z-scrna_advanced-40798ab33b	fail	runtime_error	305.532							"RuntimeError: Figure script failed: Rscript scripts/figures/F2_reproducibility.R --outdir=plots/publication
+Warning message:
+D-Bus service not found!
+
+- If you are in a container environment, please consider adding the
+  following to your configuration to silence this warning:
+
+  options(bspm.sudo = TRUE)
+
+- If you are in a desktop/server environment, please remove any 'bspm'
+  installation from the user library and force a new system
+  installation as follows:
+
+  $ sudo Rscript --vanilla -e 'install.packages(""bspm"", repos=""https://cran.r-project.org"")' 
+Error: Missing R deps: ggplot2 + patchwork
+Execution halted"
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scanpy-standard	20260209T145544Z-scrna_advanced-6b39c89630	ok		9.132							integration scenario (baseline stage only)
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	harmony	20260209T145544Z-scrna_advanced-6b39c89630	ok		19.810							integration stage (Harmony on PCA)
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	20260209T145544Z-scrna_advanced-6b39c89630	ok		42.948							compute_tier=gpu;hvg=2000;latent=30;epochs=50
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	20260209T145544Z-scrna_advanced-6b39c89630	ok		39.020							perturbation=hvg_half
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	advanced:scvi	20260209T145544Z-scrna_advanced-6b39c89630	fail	runtime_error	335.661							"RuntimeError: Figure script failed: Rscript scripts/figures/F6_robustness_matrix.R --outdir=plots/publication
+Warning message:
+D-Bus service not found!
+
+- If you are in a container environment, please consider adding the
+  following to your configuration to silence this warning:
+
+  options(bspm.sudo = TRUE)
+
+- If you are in a desktop/server environment, please remove any 'bspm'
+  installation from the user library and force a new system
+  installation as follows:
+
+  $ sudo Rscript --vanilla -e 'install.packages(""bspm"", repos=""https://cran.r-project.org"")' 
+Error in library(tidyr) : there is no package called ‘tidyr’
+Calls: suppressPackageStartupMessages -> withCallingHandlers -> library
+Execution halted"
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scanpy-standard	20260209T155506Z-scrna_advanced-dc5f54d273	ok		9.289							integration scenario (baseline stage only)
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	harmony	20260209T155506Z-scrna_advanced-dc5f54d273	ok		20.771							integration stage (Harmony on PCA)
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	20260209T155506Z-scrna_advanced-dc5f54d273	ok		50.772							compute_tier=gpu;hvg=2000;latent=30;epochs=50
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	20260209T155506Z-scrna_advanced-dc5f54d273	ok		38.832							perturbation=hvg_half
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scanpy-standard	20260209T160125Z-scrna_advanced-99cf928fcb	ok		12.335							integration scenario (baseline stage only)
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	harmony	20260209T160125Z-scrna_advanced-99cf928fcb	ok		21.468							integration stage (Harmony on PCA)
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	20260209T160125Z-scrna_advanced-99cf928fcb	ok		42.834							compute_tier=gpu;hvg=2000;latent=30;epochs=50
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	20260209T160125Z-scrna_advanced-99cf928fcb	ok		38.940							perturbation=hvg_half
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scanpy-standard	20260209T160716Z-scrna_advanced-3bcab6b84f	ok		9.781							integration scenario (baseline stage only)
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	harmony	20260209T160716Z-scrna_advanced-3bcab6b84f	ok		22.423							integration stage (Harmony on PCA)
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	20260209T160716Z-scrna_advanced-3bcab6b84f	ok		42.764							compute_tier=gpu;hvg=2000;latent=30;epochs=50
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	20260209T160716Z-scrna_advanced-3bcab6b84f	ok		38.778							perturbation=hvg_half
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	scanpy-standard	20260209T161306Z-scrna_advanced-2f1381958f	ok		9.209							integration scenario (baseline stage only)
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	harmony	20260209T161306Z-scrna_advanced-2f1381958f	ok		19.548							integration stage (Harmony on PCA)
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	scvi	20260209T161306Z-scrna_advanced-2f1381958f	ok		45.649							compute_tier=gpu;hvg=2000;latent=30;epochs=50
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	scvi	20260209T161306Z-scrna_advanced-2f1381958f	ok		38.949							perturbation=hvg_half
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	scanpy-standard	20260209T161903Z-scrna_advanced-cae460a86e	ok		12.374							integration scenario (baseline stage only)
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	harmony	20260209T161903Z-scrna_advanced-cae460a86e	ok		21.049							integration stage (Harmony on PCA)
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	scvi	20260209T161903Z-scrna_advanced-cae460a86e	ok		43.440							compute_tier=gpu;hvg=2000;latent=30;epochs=50
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	scvi	20260209T161903Z-scrna_advanced-cae460a86e	ok		39.115							perturbation=hvg_half
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	scanpy-standard	20260209T162457Z-scrna_advanced-fb92b59860	ok		9.754							integration scenario (baseline stage only)
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	harmony	20260209T162457Z-scrna_advanced-fb92b59860	ok		21.901							integration stage (Harmony on PCA)
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	scvi	20260209T162457Z-scrna_advanced-fb92b59860	ok		42.724							compute_tier=gpu;hvg=2000;latent=30;epochs=50
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	scvi	20260209T162457Z-scrna_advanced-fb92b59860	ok		38.620							perturbation=hvg_half
+10x_Visium_Human_Lymph_Node_1p1_cf	Visium	baseline:scanpy-visium-baseline	20260209T163744Z-visium_baseline-edf8f914c7	ok		92.988							v0 visium baseline pack
+10x_Visium_Human_Lymph_Node_1p1_cf	Visium	baseline:scanpy-visium-baseline	20260209T163939Z-visium_baseline-5bba9f073a	ok		93.653							v0 visium baseline pack
+10x_Visium_Human_Lymph_Node_1p1_cf	Visium	baseline:scanpy-visium-baseline	20260209T164135Z-visium_baseline-e25bb11843	ok		93.838							v0 visium baseline pack
+Mouse_Brain_Visium_10x	Visium	baseline:scanpy-visium-baseline	20260209T164330Z-visium_baseline-c4191376d0	ok		47.305							v0 visium baseline pack
+Mouse_Brain_Visium_10x	Visium	baseline:scanpy-visium-baseline	20260209T164459Z-visium_baseline-2e8b11b278	ok		47.091							v0 visium baseline pack
+Mouse_Brain_Visium_10x	Visium	baseline:scanpy-visium-baseline	20260209T164628Z-visium_baseline-dc2f909d40	ok		46.802							v0 visium baseline pack
+Mouse_Brain_Visium_10x	Visium	deconvolution:rctd	20260209T164756Z-visium_deconvolution-1c199e324e	ok		1853.181							reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv
+Mouse_Brain_Visium_10x	Visium	deconvolution:tangram	20260209T164756Z-visium_deconvolution-1c199e324e	ok		308.399							reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=default
+Mouse_Brain_Visium_10x	Visium	deconvolution:cell2location	20260209T164756Z-visium_deconvolution-1c199e324e	skip									reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=default
+Mouse_Brain_Visium_10x	Visium	deconvolution:rctd	20260209T173206Z-visium_deconvolution-c4aaa3502c	ok		1825.554							reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv
+Mouse_Brain_Visium_10x	Visium	deconvolution:tangram	20260209T173206Z-visium_deconvolution-c4aaa3502c	ok		300.439							reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=default
+Mouse_Brain_Visium_10x	Visium	deconvolution:cell2location	20260209T173206Z-visium_deconvolution-c4aaa3502c	skip									reference=Allen_Cortex_scRNA_SeuratV5_Reference_RDS;labels=provided_tsv;compute_tier=gpu;runner=default
+SMOKE_TOY_10X_MTX	scRNA-seq	python-ingest	20260303T114916Z-smoke-dbc986d3de	ok		0.002							smoke ingest only

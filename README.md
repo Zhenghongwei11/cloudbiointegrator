@@ -23,13 +23,13 @@ The container provides a pinned **environment** for consistent execution.
 If a tagged image is available on GHCR, pull it:
 
 ```bash
-docker pull ghcr.io/zhenghongwei11/cloudbiointegrator:v0.1.6
+docker pull ghcr.io/zhenghongwei11/cloudbiointegrator:v0.1.7
 ```
 
 Then run:
 
 ```bash
-docker run --rm -v "$PWD:/work" -w /work ghcr.io/zhenghongwei11/cloudbiointegrator:v0.1.6 \
+docker run --rm -v "$PWD:/work" -w /work ghcr.io/zhenghongwei11/cloudbiointegrator:v0.1.7 \
   bash -lc "make skeleton && make validate"
 ```
 

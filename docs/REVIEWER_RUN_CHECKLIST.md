@@ -17,11 +17,15 @@ expect to see on disk, and how to verify that the outputs correspond to the manu
 From the repository root:
 
 ```bash
-# 1) Build the image
-docker build -t cloudbiointegrator:local .
+# 1) Obtain the image
+# Preferred: pull a tagged release image from GHCR (if available)
+docker pull ghcr.io/zhenghongwei11/cloudbiointegrator:v0.1.3
+
+# Alternative: build locally
+# docker build -t cloudbiointegrator:local .
 
 # 2) Run minimal end-to-end checks (writes outputs into your working directory)
-docker run --rm -v "$PWD:/work" -w /work cloudbiointegrator:local \
+docker run --rm -v "$PWD:/work" -w /work ghcr.io/zhenghongwei11/cloudbiointegrator:v0.1.3 \
   bash -lc "make skeleton && make validate && make smoke && make validate && make review-bundle"
 ```
 

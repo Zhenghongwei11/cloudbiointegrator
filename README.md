@@ -18,6 +18,23 @@ Requirements: Docker Desktop/Engine.
 This page is a minimal **usage** and **reproduce/replicate** guide for the included evidence tables and figures.
 The container provides a pinned **environment** for consistent execution.
 
+### Option A: Pull a Prebuilt Image (Recommended)
+
+If a tagged image is available on GHCR, pull it:
+
+```bash
+docker pull ghcr.io/zhenghongwei11/cloudbiointegrator:v0.1.3
+```
+
+Then run:
+
+```bash
+docker run --rm -v "$PWD:/work" -w /work ghcr.io/zhenghongwei11/cloudbiointegrator:v0.1.3 \
+  bash -lc "make skeleton && make validate"
+```
+
+### Option B: Build Locally
+
 ```bash
 # 1) Build the image
 docker build -t cloudbiointegrator:local .

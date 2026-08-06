@@ -19,7 +19,7 @@ output/
 
 # Large regenerable data (fetched/downloaded by scripts)
 data/references/
-data/smoke/
+data/smoke/*_real/
 
 # Credentials and private scaffolding
 toekn github

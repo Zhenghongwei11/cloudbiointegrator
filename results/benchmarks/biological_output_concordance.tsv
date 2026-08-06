@@ -1,0 +1,49 @@
+dataset_id	modality	method_id	output_type	reference_type	concordance_metric	value	ci_low	ci_high	n_units	notes
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	celltypist_label	cluster	NMI	0.638710006675623			2699	within-run concordance between predicted labels and unsupervised clusters
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	celltypist_label	cluster	NMI	0.638710006675623			2699	within-run concordance between predicted labels and unsupervised clusters
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	harmony	cluster	scanpy-standard	ARI	0.8230437812449239			13742	baseline clusters vs harmony clusters
+Mouse_Brain_Visium_10x	Visium	visium_deconvolution_pack	celltype_proportions	method_compare	mean_pearson_by_cell_type	0.05844661750713517			2695	RCTD vs Tangram on shared cell types (per-cell-type Pearson, mean)
+Mouse_Brain_Visium_10x	Visium	visium_deconvolution_pack	celltype_proportions	method_compare	mean_pearson_by_cell_type	0.05808804091400679			2695	RCTD vs Tangram on shared cell types (per-cell-type Pearson, mean)
+10x_PBMC_10k_scRNA	scRNA-seq	scanpy-standard	celltypist_label	cluster	NMI	0.8402096540949375			11043	within-run concordance between predicted labels and unsupervised clusters
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	harmony	cluster	scanpy-standard	ARI	0.8047778402483561			13742	baseline clusters vs harmony clusters
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	cluster	harmony	ARI	0.7759369289355558			13742	scVI clusters vs harmony clusters
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	harmony	cluster	scanpy-standard	ARI	0.8038486187532278			13742	baseline clusters vs harmony clusters
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	cluster	harmony	ARI	0.775299817418689			13742	scVI clusters vs harmony clusters
+Mouse_Brain_Visium_10x	Visium	visium_deconvolution_pack	celltype_proportions	method_compare	mean_pearson_by_cell_type	0.05816828319124367			2695	RCTD vs Tangram on shared cell types (per-cell-type Pearson, mean)
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	celltypist_label	cluster	NMI	0.6387100066756232			2699	within-run concordance between predicted labels and unsupervised clusters
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	celltypist_label	cluster	NMI	0.6387100066756232			2699	within-run concordance between predicted labels and unsupervised clusters
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	celltypist_label	cluster	NMI	0.6387100066756232			2699	within-run concordance between predicted labels and unsupervised clusters
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	celltypist_label	cluster	NMI	0.6362055929772389			2699	within-run concordance between predicted labels and unsupervised clusters
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	celltypist_label	cluster	NMI	0.6362055929772389			2699	within-run concordance between predicted labels and unsupervised clusters
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	celltypist_label	cluster	NMI	0.6537048594461893			2699	within-run concordance between predicted labels and unsupervised clusters
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	celltypist_label	cluster	NMI	0.6537048594461893			2699	within-run concordance between predicted labels and unsupervised clusters
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	celltypist_label	cluster	NMI	0.6544801686776098			2699	within-run concordance between predicted labels and unsupervised clusters
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	celltypist_label	cluster	NMI	0.6387100066756232			2699	within-run concordance between predicted labels and unsupervised clusters
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	celltypist_label	cluster	NMI	0.6362055929772389			2699	within-run concordance between predicted labels and unsupervised clusters
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	celltypist_label	cluster	NMI	0.6537048594461893			2699	within-run concordance between predicted labels and unsupervised clusters
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	celltypist_label	cluster	NMI	0.6544801686776098			2699	within-run concordance between predicted labels and unsupervised clusters
+10x_PBMC_3k_scRNA_2016_S3	scRNA-seq	scanpy-standard	celltypist_label	cluster	NMI	0.6634103866977396			2699	within-run concordance between predicted labels and unsupervised clusters
+10x_PBMC_10k_scRNA	scRNA-seq	scanpy-standard	celltypist_label	cluster	NMI	0.8402096540949375			11043	within-run concordance between predicted labels and unsupervised clusters
+10x_PBMC_10k_scRNA	scRNA-seq	scanpy-standard	celltypist_label	cluster	NMI	0.8297869574886462			11043	within-run concordance between predicted labels and unsupervised clusters
+10x_PBMC_10k_scRNA	scRNA-seq	scanpy-standard	celltypist_label	cluster	NMI	0.84170145581773			11043	within-run concordance between predicted labels and unsupervised clusters
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	harmony	cluster	scanpy-standard	ARI	0.8036538637579166			13742	baseline clusters vs harmony clusters
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	cluster	harmony	ARI	0.7752844405312046			13742	scVI clusters vs harmony clusters
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	harmony	cluster	scanpy-standard	ARI	0.8038484870189752			13742	baseline clusters vs harmony clusters
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	cluster	harmony	ARI	0.7752337735836735			13742	scVI clusters vs harmony clusters
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	harmony	cluster	scanpy-standard	ARI	0.8028100699167269			13742	baseline clusters vs harmony clusters
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	cluster	harmony	ARI	0.7746436849010236			13742	scVI clusters vs harmony clusters
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	harmony	cluster	scanpy-standard	ARI	0.8330403045876967			13742	baseline clusters vs harmony clusters
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	cluster	harmony	ARI	0.7684565862583661			13742	scVI clusters vs harmony clusters
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	harmony	cluster	scanpy-standard	ARI	0.806015791345122			13742	baseline clusters vs harmony clusters
+10x_PBMC3K_PBMC10K_V3_INTEGRATION_PAIR_S3	scRNA-seq	scvi	cluster	harmony	ARI	0.7514375084242185			13742	scVI clusters vs harmony clusters
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	harmony	cluster	scanpy-standard	ARI	0.8038484870189752			13742	baseline clusters vs harmony clusters
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	scvi	cluster	harmony	ARI	0.7752337735836735			13742	scVI clusters vs harmony clusters
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	harmony	cluster	scanpy-standard	ARI	0.8323344620603627			13742	baseline clusters vs harmony clusters
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	scvi	cluster	harmony	ARI	0.7689632574191915			13742	scVI clusters vs harmony clusters
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	harmony	cluster	scanpy-standard	ARI	0.8027706710758351			13742	baseline clusters vs harmony clusters
+PBMC3K_PLUS_PBMC10K_INTEGRATION	scRNA-seq	scvi	cluster	harmony	ARI	0.7513807160667214			13742	scVI clusters vs harmony clusters
+Mouse_Brain_Visium_10x	Visium	visium_deconvolution_pack	celltype_proportions	method_compare	mean_pearson_by_cell_type	0.05819204304376566			2695	RCTD vs Tangram on shared cell types (per-cell-type Pearson, mean)
+Mouse_Brain_Visium_10x	Visium	visium_deconvolution_pack	celltype_proportions	method_compare	mean_pearson_by_cell_type	0.07605302493833249			2695	RCTD vs Tangram on shared cell types (per-cell-type Pearson, mean)
+Mouse_Brain_Visium_10x	Visium	visium_deconvolution_pack	celltype_proportions	method_compare	median_cosine_by_spot	0.364	0.234	0.495	2695	pair=rctd_vs_tangram; RCTD vs Tangram spotwise cosine similarity across shared cell types (L1-normalized), median and IQR
+Mouse_Brain_Visium_10x	Visium	visium_deconvolution_pack	celltype_proportions	method_compare	median_cosine_by_spot	0.633	0.557	0.689	2695	pair=tangram_vs_cell2location; Tangram vs cell2location spotwise cosine similarity across shared cell types (L1-normalized), median and IQR
+Mouse_Brain_Visium_10x	Visium	visium_deconvolution_pack	celltype_proportions	method_compare	median_cosine_by_spot	0.494	0.421	0.558	2695	pair=rctd_vs_cell2location; RCTD vs cell2location spotwise cosine similarity across shared cell types (L1-normalized), median and IQR

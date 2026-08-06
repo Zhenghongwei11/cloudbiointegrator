@@ -1,0 +1,2 @@
+dataset_id	case_id	cluster_id	cluster_n_cells	celltypist_label	dominant_label_n_cells	dominant_label_frac_in_cluster	monocyte_total_n_cells	monocyte_total_frac_in_cluster	top_marker_genes	params_sha256	notes
+10x_PBMC_3k_scRNA_2016_S3	monocytes	1	678	Classical monocytes	389	0.5737	636	0.9381	CST3;TYROBP;FTL;FTH1;LYZ;AIF1;LST1;LGALS1	3fcc9cf0e3476c84ebc6fece48c8250fe0c66ec88c68dc88b559245552803060	Case vignette: cluster with highest monocyte-labeled fraction (CellTypist) under Scanpy baseline.

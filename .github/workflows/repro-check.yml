@@ -1,0 +1,65 @@
+name: cross-env-repro-check
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, "feat/**"]
+  pull_request:
+
+jobs:
+  repro:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve runtime image
+        id: image
+        run: |
+          set -e
+          IMAGE=ghcr.io/zhenghongwei11/cloudbiointegrator:v0.1.7
+          if docker pull "$IMAGE" >/dev/null 2>&1; then
+            echo "image=$IMAGE" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::GHCR image pull failed; building from Dockerfile (may take 30-60 min)"
+            docker build -t cloudbiointegrator:ci .
+            echo "image=cloudbiointegrator:ci" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run skeleton + smoke in fresh container and record CI manifest
+        run: |
+          docker run --rm -v "$PWD:/work" -w /work "${{ steps.image.outputs.image }}" \
+            bash -lc "make skeleton && make validate && make smoke && make validate && \
+                      python3 scripts/audit/record_run_manifest.py --out results/runs/ci_manifest.tsv"
+
+      - name: Check committed baseline manifest exists
+        run: |
+          test -f results/runs/baseline_manifest.tsv || \
+            { echo "ERROR: commit results/runs/baseline_manifest.tsv first (see docs/CROSS_ENV_CI_CHECK.md)"; exit 1; }
+
+      - name: Assert expected toy smoke outcome (correctness anchor, not just reproducibility)
+        run: |
+          python3 - <<'PYEOF'
+          import json
+          from pathlib import Path
+          files = sorted(Path("results/runs").glob("*/smoke_ingest_summary.json"))
+          assert files, "no smoke_ingest summary found"
+          summary = json.loads(files[-1].read_text(encoding="utf-8"))["summary"]
+          expected = {"n_cells_or_spots": 80, "n_genes": 50, "matrix_n_entries": 200}
+          got = {k: summary[k] for k in expected}
+          assert got == expected, f"toy smoke outcome drifted: {got}"
+          print("expected toy smoke outcome OK:", got)
+          PYEOF
+
+      - name: Compare CI manifest against baseline (cross-environment byte-level check)
+        run: |
+          python3 scripts/audit/compare_run_manifests.py \
+            results/runs/baseline_manifest.tsv \
+            results/runs/ci_manifest.tsv
+
+      - name: Upload CI run artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-runs
+          path: results/runs/

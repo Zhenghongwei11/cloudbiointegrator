@@ -1,0 +1,5 @@
+dataset_id	pair	stratum	n	median	q1	q3	definition
+Mouse_Brain_Visium_10x	rctd_vs_tangram	glia_top1_by_RCTD	424	0.28840502846821015	0.1522124919975561	0.41828914745893553	glia_top1_by_RCTD
+Mouse_Brain_Visium_10x	rctd_vs_tangram	layer_like_top1_by_RCTD	1726	0.393610029793259	0.27769796533548985	0.5149338257659191	layer_like_top1_by_RCTD
+Mouse_Brain_Visium_10x	rctd_vs_tangram	non_glia_top1_by_RCTD	2271	0.377435694624551	0.2511433297903338	0.5031938089767958	non_glia_top1_by_RCTD
+Mouse_Brain_Visium_10x	rctd_vs_tangram	non_layer_like_top1_by_RCTD	969	0.2938253524933528	0.1558226296171136	0.43822118516841707	non_layer_like_top1_by_RCTD

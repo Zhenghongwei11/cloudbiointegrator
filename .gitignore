@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.venv_app/
+
+# Agent/tooling caches
+.codex/
+.playwright-cli/
+
+# Local run logs and build outputs
+/runs/
+tmp/
+output/
+*.log
+
+# Large regenerable data (fetched/downloaded by scripts)
+data/references/
+data/smoke/
+
+# Credentials and private scaffolding
+toekn github
+openspec/
+conductor/
+docs/submissions/
+docs/review_bundle/
+docs/audit_runs*/

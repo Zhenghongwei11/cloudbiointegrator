@@ -1,0 +1,3 @@
+stage	dataset_id	artifact_path	sha256	run_id
+skeleton	NA	results/runs/20260806T055301Z-skeleton-ca6fcdca05/skeleton_summary.json	c1da5ef81534edbf52c2338f8377c35f5f1bfd9e09702fe1a50a3888dc870b0d	20260806T055301Z-skeleton-ca6fcdca05
+smoke_ingest	SMOKE_TOY_10X_MTX	results/runs/20260806T055304Z-smoke-a6293b4178/smoke_ingest_summary.json	21e6c59047c96b3e698cd17038d5cb4a6aaec4995dc52b1a34d33f214e95a92e	20260806T055304Z-smoke-a6293b4178

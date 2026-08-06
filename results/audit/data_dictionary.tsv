@@ -1,0 +1,92 @@
+table_path	column	data_type	units	definition	allowed_values	notes
+results/dataset_summary.tsv	dataset_id	string		stable dataset/task identifier used across benchmark tables		Examples: 10x_PBMC_3k_scRNA_2016_S3; Mouse_Brain_Visium_10x
+results/dataset_summary.tsv	modality	string		data modality	scRNA-seq; Visium	
+results/dataset_summary.tsv	organism	string		source organism		Free text
+results/dataset_summary.tsv	tissue	string		source tissue		Free text
+results/dataset_summary.tsv	assay_platform	string		assay platform / technology		Example: 10x Chromium; 10x Visium
+results/dataset_summary.tsv	input_artifact	string		input artifact root (as ingested by method library)		
+results/dataset_summary.tsv	entrypoint	string		entrypoint type used for ingestion		Example: cellranger_mtx; spaceranger_bundle
+results/dataset_summary.tsv	role	string		role of dataset in the evaluation matrix	smoke; benchmark; anchor; negative_control	Optional taxonomy
+results/dataset_summary.tsv	n_samples	string		number of samples (if applicable)		
+results/dataset_summary.tsv	n_donors	string		number of donors (if applicable)		
+results/dataset_summary.tsv	n_cells_or_spots	integer	count	number of cells (scRNA) or spots (Visium)		
+results/dataset_summary.tsv	n_genes	integer	count	number of genes/features		
+results/dataset_summary.tsv	reference_genome	string		reference genome build (if applicable)		
+results/dataset_summary.tsv	primary_citation	string		primary dataset citation key (if applicable)		
+results/dataset_summary.tsv	source_url	string		URL for dataset or source page (if applicable)		
+results/dataset_summary.tsv	license	string		license identifier/summary (if known)		
+results/dataset_summary.tsv	qc_summary	string		compact QC summary string (key=value;key=value...)		Not machine-critical; reviewer-facing summary
+results/dataset_summary.tsv	notes	string		free-text notes		
+
+results/audit/reproducibility_checks.tsv	run_id	string		run identifier for the check record		
+results/audit/reproducibility_checks.tsv	timestamp_utc	string	ISO-8601 UTC	row creation time (audit record timestamp)		
+results/audit/reproducibility_checks.tsv	dataset_id	string		dataset/task id for the check row		NA used for contract/skeleton rows
+results/audit/reproducibility_checks.tsv	stage	string		pipeline stage identifier		Examples: skeleton; smoke; scrna_*; visium_*
+results/audit/reproducibility_checks.tsv	env_hash	string		SHA-256 hash of a stable environment fingerprint (rerun-stable when environment unchanged)		Fingerprint excludes timestamps by design
+results/audit/reproducibility_checks.tsv	container_image	string		container image identifier (tag/digest) if provided		Currently reserved; may be empty depending on runner
+results/audit/reproducibility_checks.tsv	git_commit	string		git commit used for the run		
+results/audit/reproducibility_checks.tsv	seed	integer		random seed used (if applicable)		
+results/audit/reproducibility_checks.tsv	action_schema_version	string		declared action schema version	v1	Contract version for allowed actions
+results/audit/reproducibility_checks.tsv	params_hash	string		hash of declared parameters (if available)		Currently reserved; may be empty depending on runner
+results/audit/reproducibility_checks.tsv	output_table_path	string		path to the declared output table being checked		
+results/audit/reproducibility_checks.tsv	output_sha256	string		SHA-256 digest of output_table_path at check time		
+results/audit/reproducibility_checks.tsv	pass	integer		1 if check passed else 0	0;1	
+results/audit/reproducibility_checks.tsv	fail_reason	string		reason for failure (if pass=0)		
+results/audit/reproducibility_checks.tsv	wall_time_s	number	seconds	wall-clock time for the stage/check (when recorded)		
+results/audit/reproducibility_checks.tsv	peak_ram_gb	number	GB	peak resident memory (when recorded)		Currently not populated in the included benchmark runs
+results/audit/reproducibility_checks.tsv	notes	string		free-text notes		
+
+results/benchmarks/runtime_cost_failure.tsv	dataset_id	string		dataset/task identifier		
+results/benchmarks/runtime_cost_failure.tsv	modality	string		data modality	scRNA-seq; Visium	
+results/benchmarks/runtime_cost_failure.tsv	method_id	string		method identifier (runner/module id)		Examples: scanpy-standard; seurat-v5-standard; tangram; rctd
+results/benchmarks/runtime_cost_failure.tsv	run_id	string		run identifier for this method execution		
+results/benchmarks/runtime_cost_failure.tsv	status	string		terminal status of the run	ok;fail;skip	Manuscript reliability summaries use {ok, fail}
+results/benchmarks/runtime_cost_failure.tsv	failure_type	string		coarse failure classification (if status=fail)		
+results/benchmarks/runtime_cost_failure.tsv	wall_time_s	number	seconds	wall-clock time for the run		
+results/benchmarks/runtime_cost_failure.tsv	peak_ram_gb	number	GB	peak resident memory (RSS) during the run		Column reserved; not populated in current evidence tables
+results/benchmarks/runtime_cost_failure.tsv	peak_disk_gb	number	GB	peak disk usage (if measured)		Reserved
+results/benchmarks/runtime_cost_failure.tsv	cpu_hours	number	hours	CPU-hours (if measured)		Reserved
+results/benchmarks/runtime_cost_failure.tsv	gpu_hours	number	hours	GPU-hours (if measured)		Reserved
+results/benchmarks/runtime_cost_failure.tsv	estimated_cost_usd	number	USD	estimated cloud cost (if modeled)		Reserved
+results/benchmarks/runtime_cost_failure.tsv	cost_model	string		cost model identifier (if estimated_cost_usd populated)		Reserved
+results/benchmarks/runtime_cost_failure.tsv	notes	string		free-text notes		
+
+results/benchmarks/method_benchmark.tsv	dataset_id	string		dataset/task identifier		
+results/benchmarks/method_benchmark.tsv	modality	string		data modality	scRNA-seq; Visium	
+results/benchmarks/method_benchmark.tsv	task	string		task identifier (e.g., qc, clustering, integration, deconvolution)		
+results/benchmarks/method_benchmark.tsv	method_id	string		method identifier		
+results/benchmarks/method_benchmark.tsv	method_version	string		method/software version (if recorded)		
+results/benchmarks/method_benchmark.tsv	baseline_flag	integer		1 if baseline else 0	0;1	
+results/benchmarks/method_benchmark.tsv	metric_id	string		metric identifier (see allowed values)	ari_clusters_vs_baseline;ari_clusters_vs_harmony;batch_mixing_nn_frac_mean;gene_overlap;label_purity_nn_frac_mean;mean_entropy;mean_max_weight;median_n_genes_by_counts;median_pct_counts_mt;median_total_counts;n_cell_types;n_cell_types_pred;n_cells_after_qc;n_clusters;n_spots_in_tissue;n_spots_total	Metric semantics depend on metric_id
+results/benchmarks/method_benchmark.tsv	metric_value	number		variable by metric_id		
+results/benchmarks/method_benchmark.tsv	metric_ci_low	number		lower uncertainty bound (if computed)		
+results/benchmarks/method_benchmark.tsv	metric_ci_high	number		upper uncertainty bound (if computed)		
+results/benchmarks/method_benchmark.tsv	metric_unit	string		unit label (if applicable)		Examples: fraction; count; seconds
+results/benchmarks/method_benchmark.tsv	eval_split	string		evaluation split identifier (if applicable)		
+results/benchmarks/method_benchmark.tsv	replicate_id	string		replicate identifier (if applicable)		
+results/benchmarks/method_benchmark.tsv	n_units	integer	count	number of units used for the metric (cells/spots/etc.)		
+results/benchmarks/method_benchmark.tsv	notes	string		free-text notes		
+
+results/benchmarks/biological_output_concordance.tsv	dataset_id	string		dataset/task identifier		
+results/benchmarks/biological_output_concordance.tsv	modality	string		data modality	scRNA-seq; Visium	
+results/benchmarks/biological_output_concordance.tsv	method_id	string		method identifier		
+results/benchmarks/biological_output_concordance.tsv	output_type	string		output being compared (e.g., clusters, labels, weights)		
+results/benchmarks/biological_output_concordance.tsv	reference_type	string		reference output type (baseline, labels, alternate method)		
+results/benchmarks/biological_output_concordance.tsv	concordance_metric	string		concordance metric name	ARI;NMI;mean_pearson_by_cell_type;median_cosine_by_spot	Metric semantics depend on concordance_metric
+results/benchmarks/biological_output_concordance.tsv	value	number		metric value		
+results/benchmarks/biological_output_concordance.tsv	ci_low	number		lower uncertainty bound (if computed)		
+results/benchmarks/biological_output_concordance.tsv	ci_high	number		upper uncertainty bound (if computed)		
+results/benchmarks/biological_output_concordance.tsv	n_units	integer	count	number of units used for the metric		
+results/benchmarks/biological_output_concordance.tsv	notes	string		free-text notes		
+
+results/benchmarks/robustness_matrix.tsv	dataset_id	string		dataset/task identifier		
+results/benchmarks/robustness_matrix.tsv	modality	string		data modality	scRNA-seq; Visium	
+results/benchmarks/robustness_matrix.tsv	method_id	string		method identifier		
+results/benchmarks/robustness_matrix.tsv	perturbation_id	string		perturbation identifier	seed_plus_1;hvg_half;integration_vs_baseline	Perturbations are predeclared in the evaluation matrix/manuscript
+results/benchmarks/robustness_matrix.tsv	severity	string		perturbation severity label	low;na	
+results/benchmarks/robustness_matrix.tsv	metric_id	string		robustness metric identifier	ARI_cluster;delta_batch_mixing_mean;mean_pearson_by_cell_type	Metric semantics depend on metric_id
+results/benchmarks/robustness_matrix.tsv	metric_value	number		variable by metric_id		
+results/benchmarks/robustness_matrix.tsv	delta_vs_nominal	number		variable	metric_value minus nominal (when defined)		For delta_batch_mixing_mean, positive indicates more cross-batch neighbors on average
+results/benchmarks/robustness_matrix.tsv	pass	integer		1 if robustness threshold met else 0	0;1	Thresholds used in manuscript: ARI>=0.90 (seed/HVG); mean Pearson>=0.90 (Tangram HVG/2 concordance)
+results/benchmarks/robustness_matrix.tsv	failure_reason	string		reason for failure (if pass=0)		
+results/benchmarks/robustness_matrix.tsv	notes	string		free-text notes		

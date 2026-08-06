@@ -1,0 +1,167 @@
+ARG INSTALL_CELL2LOCATION=0
+
+FROM rocker/r2u:24.04 AS scvi-deps
+
+WORKDIR /app
+
+ENV DEBIAN_FRONTEND=noninteractive
+SHELL ["/bin/bash", "-lc"]
+
+# Keep parity with the main image (scanpy + R figures) while adding scVI deps.
+ARG PYTHON_VERSION=3.11.11
+ARG PYTHON_TGZ_SHA256=883bddee3c92fcb91cf9c09c5343196953cbb9ced826213545849693970868ed
+
+RUN if [[ -f /etc/apt/sources.list.d/cran.sources ]]; then rm -f /etc/apt/sources.list.d/cran.sources; fi \
+  && sed -i "s|URIs: http://ports.ubuntu.com/ubuntu-ports/|URIs: https://ports.ubuntu.com/ubuntu-ports/|g" /etc/apt/sources.list.d/ubuntu.sources \
+  && apt-get update -o Acquire::Retries=8 -o Acquire::http::Timeout=60 -o Acquire::https::Timeout=60 \
+  && (apt-get install -y --no-install-recommends \
+    ca-certificates \
+    curl \
+    git \
+    make \
+    pkg-config \
+    cmake \
+    gcc \
+    g++ \
+    gfortran \
+    r-cran-ggplot2 \
+    r-cran-patchwork \
+    r-cran-ggrepel \
+    r-cran-stringr \
+    r-cran-tidyr \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libxml2-dev \
+    libfontconfig1-dev \
+    libfreetype6-dev \
+    libpng-dev \
+    libjpeg-dev \
+    libtiff-dev \
+    libharfbuzz-dev \
+    libfribidi-dev \
+    libhdf5-dev \
+    libopenblas-dev \
+    liblapack-dev \
+    libglpk-dev \
+    zlib1g-dev \
+    libbz2-dev \
+    libreadline-dev \
+    libsqlite3-dev \
+    libffi-dev \
+    liblzma-dev \
+    tk-dev \
+    uuid-dev \
+  || (apt-get update -o Acquire::Retries=8 -o Acquire::http::Timeout=60 -o Acquire::https::Timeout=60 \
+    && apt-get install -y --no-install-recommends --fix-missing \
+      ca-certificates curl git make pkg-config cmake gcc g++ gfortran \
+      r-cran-ggplot2 r-cran-patchwork r-cran-ggrepel r-cran-stringr r-cran-tidyr \
+      libcurl4-openssl-dev libssl-dev libxml2-dev libfontconfig1-dev libfreetype6-dev libpng-dev libjpeg-dev libtiff-dev \
+      libharfbuzz-dev libfribidi-dev libhdf5-dev libopenblas-dev liblapack-dev libglpk-dev \
+      zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libffi-dev liblzma-dev tk-dev uuid-dev)) \
+  && rm -rf /var/lib/apt/lists/*
+
+# Build CPython 3.11 (Ubuntu 24.04 ships Python 3.12; our pins target SciPy 1.11.x).
+RUN set -euo pipefail; \
+  apt-get update -o Acquire::Retries=5; \
+  curl -fsSL "https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz" -o /tmp/Python.tgz; \
+  echo "${PYTHON_TGZ_SHA256}  /tmp/Python.tgz" | sha256sum -c -; \
+  tar -xzf /tmp/Python.tgz -C /tmp; \
+  cd "/tmp/Python-${PYTHON_VERSION}"; \
+  ./configure --prefix=/opt/python311 --with-ensurepip=install; \
+  make -j"$(nproc)"; \
+  make install; \
+  echo "/opt/python311/lib" > /etc/ld.so.conf.d/python311.conf; \
+  ldconfig; \
+  ln -sf /opt/python311/bin/python3.11 /usr/local/bin/python3; \
+  ln -sf /opt/python311/bin/pip3.11 /usr/local/bin/pip; \
+  ln -sf /opt/python311/bin/pip3.11 /usr/local/bin/pip3; \
+  python3 -m pip install --no-cache-dir --upgrade pip 'setuptools<82' wheel; \
+  rm -rf /tmp/Python.tgz "/tmp/Python-${PYTHON_VERSION}"; \
+  rm -rf /var/lib/apt/lists/*
+
+COPY requirements/ /app/requirements/
+
+RUN pip install --no-cache-dir \
+    matplotlib==3.9.4 \
+    numpy==1.26.4 \
+    scipy==1.11.4 \
+    pandas==2.2.2 \
+    scikit-learn==1.4.2
+
+RUN pip install --no-cache-dir \
+    -c requirements/pip_constraints.txt \
+    scanpy==1.10.3 \
+    igraph==1.0.0 \
+    leidenalg==0.11.0 \
+    celltypist==1.7.1 \
+    harmonypy==0.0.10
+
+# scvi-tools (via lightning) still imports pkg_resources at runtime; ensure it's present.
+RUN python3 -m pip install --no-cache-dir --upgrade --force-reinstall 'setuptools<82' wheel \
+  && python3 -c "import pkg_resources; print('OK pkg_resources')"
+
+ENV PYTHONUNBUFFERED=1
+ENV HOME=/tmp
+ENV XDG_CACHE_HOME=/tmp/xdg_cache
+ENV MPLCONFIGDIR=/tmp/matplotlib
+ENV NUMBA_CACHE_DIR=/tmp/numba_cache
+
+CMD ["python3", "scripts/pipeline/run.py", "--help"]
+
+#
+# Targets
+# - scvi-cpu: laptop/CI friendly
+# - scvi-gpu: CUDA torch wheel; requires `docker run --gpus all` on a GPU VM
+#
+
+FROM scvi-deps AS scvi-cpu
+
+RUN pip install --no-cache-dir \
+    torch==2.2.2 \
+    scvi-tools==1.1.3 \
+    jax==0.4.28 \
+    jaxlib==0.4.28 \
+    'setuptools<82' \
+  && python3 -c "import torch; print('OK torch', torch.__version__, 'cuda', torch.version.cuda, 'available', torch.cuda.is_available())" \
+  && python3 -c "import scvi; print('OK scvi', scvi.__version__)"
+
+ARG INSTALL_CELL2LOCATION=0
+RUN if [[ "${INSTALL_CELL2LOCATION}" == "1" ]]; then \
+      pip install --no-cache-dir \
+        pyro-ppl==1.9.1 \
+        opencv-python==4.10.0.84 \
+        cell2location==0.1.4 \
+      && python3 -c "import cell2location; print('OK cell2location', getattr(cell2location,'__version__',''))"; \
+    fi
+
+COPY . /app
+
+CMD ["python3", "scripts/pipeline/run.py", "--help"]
+
+FROM scvi-deps AS scvi-gpu
+
+# NOTE: the +cu121 wheels bundle CUDA runtime libraries; the host must provide a compatible NVIDIA driver.
+RUN pip install --no-cache-dir \
+    --extra-index-url https://download.pytorch.org/whl/cu121 \
+    torch==2.2.2+cu121 \
+  && python3 -c "import torch; print('OK torch', torch.__version__, 'cuda', torch.version.cuda, 'available', torch.cuda.is_available())"
+
+RUN pip install --no-cache-dir \
+    scvi-tools==1.1.3 \
+    jax==0.4.28 \
+    jaxlib==0.4.28 \
+    'setuptools<82' \
+  && python3 -c "import scvi; print('OK scvi', scvi.__version__)"
+
+ARG INSTALL_CELL2LOCATION=0
+RUN if [[ "${INSTALL_CELL2LOCATION}" == "1" ]]; then \
+      pip install --no-cache-dir \
+        pyro-ppl==1.9.1 \
+        opencv-python==4.10.0.84 \
+        cell2location==0.1.4 \
+      && python3 -c "import cell2location; print('OK cell2location', getattr(cell2location,'__version__',''))"; \
+    fi
+
+COPY . /app
+
+CMD ["python3", "scripts/pipeline/run.py", "--help"]

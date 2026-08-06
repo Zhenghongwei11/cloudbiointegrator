@@ -1,0 +1,195 @@
+{
+  "schema_version": "v1",
+  "project_scope": {
+    "inputs": [
+      "10x Cell Ranger filtered_feature_bc_matrix/ (mtx)",
+      "10x Visium Cell Ranger spatial (filtered_feature_bc_matrix/ + spatial/)"
+    ],
+    "modalities": [
+      "scRNA-seq",
+      "10x Visium spatial transcriptomics"
+    ],
+    "non_goals": [
+      "clinical decision support",
+      "PHI ingestion",
+      "wet-lab validation"
+    ]
+  },
+  "required_action_log_fields": [
+    "run_id",
+    "action_id",
+    "timestamp_utc",
+    "dataset_id",
+    "params_hash",
+    "env_hash",
+    "git_commit",
+    "outputs"
+  ],
+  "allowed_actions": [
+    {
+      "action_id": "ingest_10x_mtx",
+      "action_name": "Ingest 10x Cell Ranger matrix (mtx)",
+      "inputs": [
+        "filtered_feature_bc_matrix/"
+      ],
+      "outputs": [
+        "results/dataset_summary.tsv",
+        "results/audit/reproducibility_checks.tsv"
+      ],
+      "determinism_controls": [
+        "seed",
+        "version capture"
+      ],
+      "allowed_methods": [
+        "python-ingest"
+      ],
+      "notes": "Smoke-test path only; no heavy compute."
+    },
+    {
+      "action_id": "ingest_visium_spatial",
+      "action_name": "Ingest 10x Visium spatial bundle (Cell Ranger spatial)",
+      "inputs": [
+        "filtered_feature_bc_matrix/",
+        "spatial/"
+      ],
+      "outputs": [
+        "results/dataset_summary.tsv",
+        "results/audit/reproducibility_checks.tsv"
+      ],
+      "determinism_controls": [
+        "seed",
+        "version capture"
+      ],
+      "allowed_methods": [
+        "seurat-spatial",
+        "scanpy-spatial"
+      ],
+      "notes": "v1 scope: Visium-only."
+    },
+    {
+      "action_id": "qc_filter",
+      "action_name": "QC + filtering (cells/spots/genes)",
+      "inputs": [
+        "filtered_feature_bc_matrix/"
+      ],
+      "outputs": [
+        "results/figures/qc_metrics.tsv"
+      ],
+      "determinism_controls": [
+        "fixed thresholds",
+        "seed (if stochastic)"
+      ],
+      "allowed_methods": [
+        "seurat-qc",
+        "scanpy-qc"
+      ],
+      "notes": "Record thresholds and retained counts."
+    },
+    {
+      "action_id": "normalize_embed_cluster",
+      "action_name": "Normalize + embed + cluster",
+      "inputs": [
+        "filtered_feature_bc_matrix/"
+      ],
+      "outputs": [
+        "results/figures/umap.tsv",
+        "results/figures/clusters.tsv"
+      ],
+      "determinism_controls": [
+        "seed",
+        "version capture"
+      ],
+      "allowed_methods": [
+        "seurat-standard",
+        "scanpy-standard"
+      ],
+      "notes": "Core baseline path."
+    },
+    {
+      "action_id": "integrate_batches",
+      "action_name": "Integrate batches/donors",
+      "inputs": [
+        "results/figures/umap.tsv",
+        "results/figures/clusters.tsv"
+      ],
+      "outputs": [
+        "results/benchmarks/method_benchmark.tsv"
+      ],
+      "determinism_controls": [
+        "seed",
+        "fixed metrics",
+        "leakage protections"
+      ],
+      "allowed_methods": [
+        "seurat-integration",
+        "harmony",
+        "scvi"
+      ],
+      "notes": "Benchmark vs baselines; predeclared metrics only."
+    },
+    {
+      "action_id": "spatial_map_deconvolve",
+      "action_name": "Spatial mapping / deconvolution (Visium)",
+      "inputs": [
+        "filtered_feature_bc_matrix/",
+        "spatial/"
+      ],
+      "outputs": [
+        "results/benchmarks/method_benchmark.tsv"
+      ],
+      "determinism_controls": [
+        "seed",
+        "fixed metrics",
+        "leakage protections"
+      ],
+      "allowed_methods": [
+        "rctd",
+        "cell2location",
+        "spotlight",
+        "card",
+        "tangram"
+      ],
+      "notes": "v1 scope: Visium-only."
+    },
+    {
+      "action_id": "export_figures",
+      "action_name": "Generate publication figures from anchor tables",
+      "inputs": [
+        "results/"
+      ],
+      "outputs": [
+        "plots/publication/pdf/",
+        "plots/publication/png/"
+      ],
+      "determinism_controls": [
+        "scripted exports only"
+      ],
+      "allowed_methods": [
+        "scripts/figures/*"
+      ],
+      "notes": "No manual numeric edits."
+    },
+    {
+      "action_id": "build_audit_bundle",
+      "action_name": "Build audit bundle (run logs + checksums + env)",
+      "inputs": [
+        "results/",
+        "plots/publication/",
+        "docs/"
+      ],
+      "outputs": [
+        "docs/audit_runs/<run_id>/",
+        "docs/audit_runs/<run_id>.zip"
+      ],
+      "determinism_controls": [
+        "checksums",
+        "git commit capture"
+      ],
+      "allowed_methods": [
+        "scripts/audit/build_audit_bundle.py"
+      ],
+      "notes": "Required for external-review readiness."
+    }
+  ]
+}
+

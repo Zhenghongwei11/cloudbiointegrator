@@ -373,8 +373,8 @@ def rscript_available() -> bool:
 
 def run_figures(outdir: str) -> None:
     frozen_dir = ROOT / outdir / "frozen"
-    frozen_f1_pdf = frozen_dir / "pdf" / "F1_system_contract.pdf"
-    frozen_f1_png = frozen_dir / "png" / "F1_system_contract.png"
+    frozen_f1_pdf = frozen_dir / "pdf" / "F1_system_architecture.pdf"
+    frozen_f1_png = frozen_dir / "png" / "F1_system_architecture.png"
     use_frozen_f1 = frozen_f1_pdf.exists() and frozen_f1_png.exists()
     frozen_f4_pdf = frozen_dir / "pdf" / "F4_spatial_benchmark.pdf"
     frozen_f4_png = frozen_dir / "png" / "F4_spatial_benchmark.png"
@@ -417,8 +417,8 @@ def run_figures(outdir: str) -> None:
     if use_frozen_f1:
         (ROOT / outdir / "pdf").mkdir(parents=True, exist_ok=True)
         (ROOT / outdir / "png").mkdir(parents=True, exist_ok=True)
-        shutil.copy2(frozen_f1_pdf, ROOT / outdir / "pdf" / "F1_system_contract.pdf")
-        shutil.copy2(frozen_f1_png, ROOT / outdir / "png" / "F1_system_contract.png")
+        shutil.copy2(frozen_f1_pdf, ROOT / outdir / "pdf" / "F1_system_architecture.pdf")
+        shutil.copy2(frozen_f1_png, ROOT / outdir / "png" / "F1_system_architecture.png")
 
 
 def build_audit_bundle(run_id: str, include_paths: list[str]) -> Path:

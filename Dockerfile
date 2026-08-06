@@ -55,8 +55,8 @@ RUN sed -i "s|URIs: http://ports.ubuntu.com/ubuntu-ports/|URIs: https://ports.ub
       libharfbuzz-dev libfribidi-dev libhdf5-dev libopenblas-dev liblapack-dev libglpk-dev \
       zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libffi-dev liblzma-dev tk-dev uuid-dev)) \
   && (apt-get install -y --no-install-recommends \
-    r-cran-seurat=5.4.0-1.ca2404.1 \
-    r-cran-leidenbase=0.1.36-1.ca2404.1 \
+    r-cran-seurat \
+    r-cran-leidenbase \
     r-cran-ggplot2 \
     r-cran-patchwork \
     r-cran-ggrepel \
@@ -65,7 +65,7 @@ RUN sed -i "s|URIs: http://ports.ubuntu.com/ubuntu-ports/|URIs: https://ports.ub
     r-cran-remotes \
     || (apt-get update -o Acquire::Retries=8 -o Acquire::http::Timeout=60 -o Acquire::https::Timeout=60 \
       && apt-get install -y --no-install-recommends --fix-missing \
-        r-cran-seurat=5.4.0-1.ca2404.1 r-cran-leidenbase=0.1.36-1.ca2404.1 \
+        r-cran-seurat r-cran-leidenbase \
         r-cran-ggplot2 r-cran-patchwork r-cran-ggrepel r-cran-stringr r-cran-tidyr r-cran-remotes)) \
   && rm -rf /var/lib/apt/lists/*
 

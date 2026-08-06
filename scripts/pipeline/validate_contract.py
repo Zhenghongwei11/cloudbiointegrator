@@ -123,12 +123,12 @@ EXPECTED_HEADERS: dict[str, list[str]] = {
 
 
 EXPECTED_FIGURES: list[str] = [
-    "F1_system_contract",
+    "F1_system_architecture",
     "F2_reproducibility",
     "F3_scrna_benchmark",
     "F4_spatial_benchmark",
-    "F5_ops_benchmark",
-    "F6_robustness_matrix",
+    "F5_operational_feasibility",
+    "F6_perturbation_sensitivity",
 ]
 
 

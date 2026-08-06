@@ -17,14 +17,9 @@ jobs:
         id: image
         run: |
           set -e
-          IMAGE=ghcr.io/zhenghongwei11/cloudbiointegrator:v0.1.7
-          if docker pull "$IMAGE" >/dev/null 2>&1; then
-            echo "image=$IMAGE" >> "$GITHUB_OUTPUT"
-          else
-            echo "::warning::GHCR image pull failed; building from Dockerfile (may take 30-60 min)"
-            docker build -t cloudbiointegrator:ci .
-            echo "image=cloudbiointegrator:ci" >> "$GITHUB_OUTPUT"
-          fi
+          echo "::notice::Building image from the repository Dockerfile (30-60 min) to guarantee the image matches the checked-out code"
+          docker build -t cloudbiointegrator:ci .
+          echo "image=cloudbiointegrator:ci" >> "$GITHUB_OUTPUT"
 
       - name: Run skeleton + smoke in fresh container and record CI manifest
         run: |

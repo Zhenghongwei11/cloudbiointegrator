@@ -1,0 +1,13 @@
+{
+  "title": "CloudBioIntegrator",
+  "description": "Containerized framework for standardized scRNA-seq and 10x Visium spatial transcriptomics analysis, with cross-method concordance auditing, perturbation sensitivity testing, and cross-environment reproducibility verification.",
+  "upload_type": "software",
+  "creators": [
+    {
+      "name": "Zheng, Hongwei",
+      "affiliation": "School of Medicine, Quanzhou Medical College"
+    }
+  ],
+  "access_right": "open",
+  "license": "MIT"
+}
